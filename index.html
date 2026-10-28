@@ -73,12 +73,32 @@ h2{font-family:'Aref Ruqaa',serif;font-size:28px;color:var(--gold);margin:0 0 6p
 .ctrl{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:12px}
 select{background:var(--card2);color:var(--text);border:1px solid #2c6054;border-radius:10px;padding:8px 10px;font-family:'IBM Plex Sans Arabic';font-size:15px;max-width:100%}
 html::-webkit-scrollbar,#readerBody::-webkit-scrollbar{width:10px;height:10px}
-html::-webkit-scrollbar-track,#readerBody::-webkit-scrollbar-track{background:rgba(255,255,255,.04);border-radius:99px}
+.dd-list::-webkit-scrollbar{width:8px}
+html::-webkit-scrollbar-track,#readerBody::-webkit-scrollbar-track,.dd-list::-webkit-scrollbar-track{background:rgba(255,255,255,.04);border-radius:99px}
 #readerBody::-webkit-scrollbar-track{margin:8px 0}
-html::-webkit-scrollbar-thumb,#readerBody::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#e8c978,#b38a2e);border-radius:99px;border:2px solid transparent;background-clip:padding-box;min-height:48px}
-html::-webkit-scrollbar-thumb:hover,#readerBody::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#f4dc97,#c99a38);background-clip:padding-box;border:2px solid transparent}
-@supports (-moz-appearance:none){html,#readerBody{scrollbar-width:thin;scrollbar-color:#b38a2e rgba(255,255,255,.05)}}
+html::-webkit-scrollbar-thumb,#readerBody::-webkit-scrollbar-thumb,.dd-list::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#e8c978,#b38a2e);border-radius:99px;border:2px solid transparent;background-clip:padding-box;min-height:48px}
+html::-webkit-scrollbar-thumb:hover,#readerBody::-webkit-scrollbar-thumb:hover,.dd-list::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#f4dc97,#c99a38);background-clip:padding-box;border:2px solid transparent}
+@supports (-moz-appearance:none){html,#readerBody,.dd-list{scrollbar-width:thin;scrollbar-color:#b38a2e rgba(255,255,255,.05)}}
 #readerBody{padding-inline-start:12px}
+.dd{position:relative}
+.dd-btn{display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:150px;max-width:100%;background:var(--card2);color:var(--text);border:1px solid #2c6054;border-radius:10px;padding:8px 12px;font-family:'IBM Plex Sans Arabic',sans-serif;font-size:15px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.dd-btn:hover,.dd.open .dd-btn,.dd-btn:focus-visible{border-color:var(--gold);outline:none}
+.dd-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:230px}
+.dd-chev{flex:none;color:var(--gold);transition:transform .15s}
+.dd.open .dd-chev{transform:rotate(180deg)}
+.dd-pop{position:absolute;top:calc(100% + 6px);right:0;z-index:30;width:max(100%,270px);max-width:min(340px,92vw);background:var(--card);border:1px solid #2c6054;border-radius:14px;box-shadow:0 14px 34px rgba(0,0,0,.55);padding:8px}
+.dd-pop.hidden{display:none}
+.dd-search{width:100%;box-sizing:border-box;background:var(--bg);border:1px solid #2c6054;color:var(--text);border-radius:10px;padding:8px 10px;font-family:'IBM Plex Sans Arabic',sans-serif;font-size:14px;margin-bottom:6px;outline:none}
+.dd-search:focus{border-color:var(--gold)}
+.dd-list{position:relative;list-style:none;margin:0;padding:0 0 0 4px;max-height:280px;overflow-y:auto;overscroll-behavior:contain}
+.dd-list li{padding:8px 10px;border-radius:8px;cursor:pointer;font-size:15px;line-height:1.6}
+.dd-list li small{display:block;color:var(--mut);font-size:12px;line-height:1.5}
+.dd-list li:hover,.dd-list li.act{background:rgba(217,180,90,.14)}
+.dd-list li.sel{color:var(--gold);font-weight:700}
+.dd-list li.off{opacity:.4;cursor:not-allowed}
+.dd-list li.off:hover{background:transparent}
+.dd-list li.dd-empty{cursor:default;color:var(--mut);text-align:center}
+.p-who{text-align:center;color:var(--mut);font-size:13px;direction:rtl}
 .player{direction:ltr;background:var(--card2);border:1px solid #2c6054;border-radius:16px;padding:12px 14px 10px;margin:8px 0 14px;display:flex;flex-direction:column;gap:10px}
 .player.hidden{display:none}
 .p-seek{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mut);font-variant-numeric:tabular-nums}
@@ -166,13 +186,15 @@ footer .f{font-family:'Amiri',serif;color:var(--text);font-size:18px}
 
 <section id="quran">
   <h2>المصحف</h2>
-  <p class="sub">اقرأ واسمع بصوت الشيخ علي جابر، واجعل نيّتك له.</p>
+  <p class="sub">اقرأ واسمع بصوت القارئ اللي تختاره (الأساسي: الشيخ علي جابر)، واجعل نيّتك له.</p>
   <div class="card">
     <div class="ctrl">
-      <select id="surahSel"><option>جاري التحميل…</option></select>
-      <select id="juzSel"></select>
+      <div id="surahDD"></div>
+      <div id="juzDD"></div>
+      <div id="recDD"></div>
     </div>
     <div class="player hidden" id="player">
+      <div class="p-who" id="pWho"></div>
       <div class="p-seek">
         <span id="pCur">٠٠:٠٠</span>
         <input type="range" id="pSeek" min="0" max="1000" value="0" step="1" aria-label="موضع التشغيل">
@@ -400,7 +422,7 @@ function paintActions() {
     ${!r ? '<button class="btn" id="aReserve">احجزه ليا (٢٤ ساعة)</button>' : ''}
     <button class="btn" id="aDone">${mine ? 'تم ✓' : 'قرأته ✓ تم'}</button>
     ${mine ? '<button class="btn alt" id="aCancel">إلغاء الحجز</button>' : ''}`;
-  $('aRead').onclick = () => { $('juzSel').value = n; $('surahSel').value = ''; openJuz(n); $('quran').scrollIntoView(); };
+  $('aRead').onclick = () => { ddJuz.set(String(n)); ddSurah.set(''); openJuz(n); $('quran').scrollIntoView(); };
   if ($('aReserve')) $('aReserve').onclick = () => reserveJuz(n);
   $('aDone').onclick = () => markDone(n);
   if ($('aCancel')) $('aCancel').onclick = () => cancelJuz(n);
@@ -450,7 +472,7 @@ setInterval(paintKhatma, 60000);
 
 /* ---------- تحديث تلقائي للنسخة ----------
    غيّر رقم النسخة ده مع كل رفع جديد، وأي حد فاتح الصفحة هتتحدّث له لوحدها. */
-const APP_VERSION = '2026-10-28-1';
+const APP_VERSION = '2026-10-28-2';
 if (location.search.indexOf('_u=') > -1 && history.replaceState) history.replaceState(null, '', location.pathname + location.hash);
 (function autoUpdate() {
   if (!/^https?:$/.test(location.protocol)) return;
@@ -479,10 +501,113 @@ if (location.search.indexOf('_u=') > -1 && history.replaceState) history.replace
 })();
 
 /* ---------- المصحف ---------- */
-const AUDIO = n => `https://server11.mp3quran.net/a_jbr/${String(n).padStart(3, '0')}.mp3`; // الشيخ علي جابر
+/* ---------- قوائم منسدلة منسّقة ---------- */
+const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const normAr = t => String(t || '').replace(/[\u064B-\u065F\u0670\u06D6-\u06ED\u0640]/g, '').replace(/[أإآٱ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي').toLowerCase();
+function makeDD(root, o) {
+  let items = [], value = '', isOpen = false, act = -1, shown = [], ph = o.placeholder;
+  root.className = 'dd' + (o.cls ? ' ' + o.cls : '');
+  root.innerHTML = `<button type="button" class="dd-btn" aria-haspopup="listbox" aria-expanded="false"><span class="dd-label"></span><svg class="dd-chev" viewBox="0 0 24 24" width="16" height="16"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="dd-pop hidden"><input class="dd-search" type="search" placeholder="ابحث…" autocomplete="off"><ul class="dd-list" role="listbox"></ul></div>`;
+  const btn = root.querySelector('.dd-btn'), lab = root.querySelector('.dd-label'), pop = root.querySelector('.dd-pop'), q = root.querySelector('.dd-search'), ul = root.querySelector('.dd-list');
+  if (!o.search) q.style.display = 'none';
+  function paintBtn() { const it = items.find(i => i.v === value); lab.textContent = (o.prefix || '') + (it ? it.l : ph); }
+  function render() {
+    const f = normAr(q.value.trim());
+    shown = items.filter(i => !f || normAr(i.l + ' ' + (i.s || '')).includes(f));
+    ul.innerHTML = shown.length ? shown.map((i, k) => {
+      const off = o.off && o.off(i);
+      return `<li role="option" data-k="${k}" class="${i.v === value ? 'sel ' : ''}${off ? 'off' : ''}">${esc(i.l)}${i.s ? `<small>${esc(i.s)}</small>` : ''}${off ? '<small>غير متاح لهذه السورة</small>' : ''}</li>`;
+    }).join('') : '<li class="dd-empty">مفيش نتائج</li>';
+    act = -1;
+  }
+  function openIt() {
+    if (!items.length) { if (o.retry) o.retry(); return; }
+    isOpen = true; root.classList.add('open'); btn.setAttribute('aria-expanded', 'true');
+    q.value = ''; render(); pop.classList.remove('hidden'); pop.style.transform = '';
+    const r = pop.getBoundingClientRect(); let dx = 0;
+    if (r.left < 8) dx = 8 - r.left; else if (r.right > innerWidth - 8) dx = innerWidth - 8 - r.right;
+    if (dx) pop.style.transform = `translateX(${dx}px)`;
+    const sel = ul.querySelector('li.sel'); if (sel) ul.scrollTop = sel.offsetTop - ul.clientHeight / 2 + sel.clientHeight / 2;
+    pop.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    if (o.search && matchMedia('(hover:hover)').matches) q.focus({ preventScroll: true });
+  }
+  function closeIt() { isOpen = false; root.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); pop.classList.add('hidden'); }
+  function pick(i) { if (!i || (o.off && o.off(i))) return; value = i.v; paintBtn(); closeIt(); if (o.onChange) o.onChange(i.v, i); }
+  btn.onclick = () => isOpen ? closeIt() : openIt();
+  ul.addEventListener('click', e => { const li = e.target.closest('li[data-k]'); if (li) pick(shown[+li.dataset.k]); });
+  q.addEventListener('input', render);
+  document.addEventListener('pointerdown', e => { if (isOpen && !root.contains(e.target)) closeIt(); });
+  root.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeIt(); btn.focus(); return; }
+    if (!isOpen) { if (e.key === 'ArrowDown' && document.activeElement === btn) { e.preventDefault(); openIt(); } return; }
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      const lis = [...ul.querySelectorAll('li[data-k]')]; if (!lis.length) return;
+      act = e.key === 'ArrowDown' ? Math.min(lis.length - 1, act + 1) : Math.max(0, act - 1);
+      lis.forEach((l, k) => l.classList.toggle('act', k === act)); lis[act].scrollIntoView({ block: 'nearest' });
+    } else if (e.key === 'Enter' && act >= 0) { e.preventDefault(); pick(shown[act]); }
+  });
+  paintBtn();
+  return {
+    setItems(a) { items = a; paintBtn(); },
+    set(v) { value = v; paintBtn(); },
+    get() { return value; },
+    setPlaceholder(t) { ph = t; paintBtn(); }
+  };
+}
+
+/* ---------- القرّاء (الأساسي: الشيخ علي جابر) ---------- */
+const jbr = { name: 'علي جابر', moshaf: 'حفص عن عاصم - مرتل · القارئ الأساسي', server: 'https://server11.mp3quran.net/a_jbr/', list: null };
+const RECS = { jbr };
+const FALLBACK_RECS = [
+  ['afs', 'مشاري راشد العفاسي', 'https://server8.mp3quran.net/afs/'],
+  ['maher', 'ماهر المعيقلي', 'https://server12.mp3quran.net/maher/'],
+  ['tblawi', 'محمد الطبلاوي', 'https://server12.mp3quran.net/tblawi/'],
+  ['akdr', 'إبراهيم الأخضر', 'https://server6.mp3quran.net/akdr/']
+];
+let recKey = 'jbr', curSurah = null, curSurahName = '';
+(function () { const sv = jget('reciterData', null); if (sv && sv.key && sv.server && sv.name) { RECS[sv.key] = { name: sv.name, moshaf: sv.moshaf || '', server: sv.server, list: sv.list || null }; recKey = sv.key; } })();
+const recItem = k => ({ v: k, l: RECS[k].name, s: RECS[k].moshaf });
+const hasSurah = (r, n) => { if (!r.list) return true; if (!r.set) r.set = new Set(String(r.list).split(',').map(Number)); return r.set.has(n); };
 const body = $('readerBody'), aud = $('aud');
 const ayaNum = n => `<span class="an">﴿${n.toLocaleString('ar-EG')}﴾</span>`;
-$('juzSel').innerHTML = '<option value="">اختر جزءًا…</option>' + Array.from({ length: 30 }, (_, i) => `<option value="${i + 1}">الجزء ${fmt(i + 1)}</option>`).join('');
+const ddSurah = makeDD($('surahDD'), { placeholder: 'اختر سورة…', search: true, retry: () => loadSurahs(), onChange: v => { ddJuz.set(''); openSurah(+v); } });
+const ddJuz = makeDD($('juzDD'), { placeholder: 'اختر جزءًا…', onChange: v => { ddSurah.set(''); openJuz(+v); } });
+ddJuz.setItems(Array.from({ length: 30 }, (_, i) => ({ v: String(i + 1), l: 'الجزء ' + fmt(i + 1) })));
+const ddRec = makeDD($('recDD'), { placeholder: 'اختر القارئ', prefix: 'القارئ: ', search: true, cls: 'rec', off: i => !!curSurah && !hasSurah(RECS[i.v], curSurah), onChange: v => changeReciter(v) });
+ddRec.setItems(recKey === 'jbr' ? [recItem('jbr')] : [recItem('jbr'), recItem(recKey)]); ddRec.set(recKey);
+function loadAudio(n, autoplay) {
+  let r = RECS[recKey];
+  if (!hasSurah(r, n)) { toast(`القارئ ${r.name} ملوش السورة دي مسجلة، فشغّلنا صوت الشيخ علي جابر.`, 'info'); r = jbr; }
+  aud.src = r.server.replace(/\/?$/, '/') + String(n).padStart(3, '0') + '.mp3';
+  $('pWho').textContent = 'بصوت: ' + r.name;
+  if ('mediaSession' in navigator && window.MediaMetadata) navigator.mediaSession.metadata = new MediaMetadata({ title: curSurahName, artist: r.name, album: 'صدقة جارية' });
+  if (autoplay) aud.play().catch(() => {});
+}
+function changeReciter(v) {
+  const wasPlaying = !aud.paused && !aud.ended, r = RECS[v];
+  recKey = v; jset('reciterData', { key: v, name: r.name, moshaf: r.moshaf, server: r.server, list: r.list });
+  if (curSurah) loadAudio(curSurah, wasPlaying);
+}
+async function loadReciters() {
+  let list = [recItem('jbr')];
+  try {
+    const res = await fetch('https://www.mp3quran.net/api/v3/reciters?language=ar'); if (!res.ok) throw 0;
+    const data = (await res.json()).reciters || [];
+    data.forEach(rc => (rc.moshaf || []).forEach(m => {
+      if (!m.server || !m.surah_list || /\/a_jbr\/?$/.test(m.server)) return;
+      const k = rc.id + ':' + m.id;
+      RECS[k] = { name: rc.name, moshaf: m.name || '', server: m.server, list: m.surah_list };
+      list.push(recItem(k));
+    }));
+    if (list.length < 3) throw 0;
+  } catch (e) {
+    FALLBACK_RECS.forEach(([id, name, server]) => { const k = 'fb:' + id; RECS[k] = { name, moshaf: 'حفص عن عاصم - مرتل', server, list: null }; list.push(recItem(k)); });
+  }
+  if (!list.some(i => i.v === recKey)) list.splice(1, 0, recItem(recKey));
+  ddRec.setItems(list); ddRec.set(recKey);
+}
+loadReciters();
 async function api(path) {
   const r = await fetch('https://api.alquran.cloud/v1/' + path); if (!r.ok) throw 0; return (await r.json()).data;
 }
@@ -495,8 +620,8 @@ async function openSurah(n) {
   try {
     const d = await api(`surah/${n}/quran-uthmani`);
     body.innerHTML = `<div class="sname">${d.name}</div>` + d.ayahs.map(a => a.text + ' ' + ayaNum(a.numberInSurah)).join(' ');
-    aud.src = AUDIO(n); $('player').classList.remove('hidden'); body.scrollTop = 0;
-    if ('mediaSession' in navigator && window.MediaMetadata) navigator.mediaSession.metadata = new MediaMetadata({ title: d.name, artist: 'الشيخ علي جابر', album: 'صدقة جارية' });
+    curSurah = n; curSurahName = d.name;
+    loadAudio(n, false); $('player').classList.remove('hidden'); body.scrollTop = 0;
   } catch (e) { loadErr(() => openSurah(n)); }
 }
 async function openJuz(n) {
@@ -504,14 +629,15 @@ async function openJuz(n) {
   try {
     const d = await api(`juz/${n}/quran-uthmani`);
     body.innerHTML = d.ayahs.map(a => (a.numberInSurah === 1 ? `<div class="sname">${a.surah.name}</div>` : '') + a.text + ' ' + ayaNum(a.numberInSurah)).join(' ');
-    aud.pause(); $('player').classList.add('hidden'); body.scrollTop = 0;
+    curSurah = null; aud.pause(); $('player').classList.add('hidden'); body.scrollTop = 0;
   } catch (e) { loadErr(() => openJuz(n)); }
 }
 function loadSurahs() {
-  $('surahSel').innerHTML = '<option value="">جاري تحميل السور…</option>';
+  ddSurah.setPlaceholder('جاري تحميل السور…');
   api('surah').then(list => {
-    $('surahSel').innerHTML = '<option value="">اختر سورة…</option>' + list.map(s => `<option value="${s.number}">${s.number}. ${s.name}</option>`).join('');
-  }).catch(() => { $('surahSel').innerHTML = '<option value="">تعذّر تحميل السور</option><option value="retry">إعادة المحاولة</option>'; });
+    ddSurah.setItems(list.map(x => ({ v: String(x.number), l: x.number + '. ' + x.name })));
+    ddSurah.setPlaceholder('اختر سورة…');
+  }).catch(() => ddSurah.setPlaceholder('تعذّر التحميل، اضغط للمحاولة'));
 }
 loadSurahs();
 /* ---------- مشغّل الصوت ---------- */
@@ -547,12 +673,7 @@ if ('mediaSession' in navigator) {
 }
 pState(); pPaint();
 aud.addEventListener('error', () => { if (aud.getAttribute('src')) toast('تعذّر تشغيل الصوت. اتأكد من الإنترنت وحاول تاني.', 'err'); });
-$('surahSel').onchange = e => {
-  const v = e.target.value;
-  if (v === 'retry') { loadSurahs(); return; }
-  if (v) { $('juzSel').value = ''; openSurah(+v); }
-};
-$('juzSel').onchange = e => { if (e.target.value) { $('surahSel').value = ''; openJuz(+e.target.value); } };
+
 
 /* ---------- الأذكار ---------- */
 const ZK = {
