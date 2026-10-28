@@ -58,15 +58,47 @@ h2{font-family:'Aref Ruqaa',serif;font-size:28px;color:var(--gold);margin:0 0 6p
 .juz-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:8px}
 .juz{border:1px solid #1f4a40;background:var(--card2);color:var(--text);border-radius:12px;padding:10px 0;font-family:'IBM Plex Sans Arabic';font-weight:600;cursor:pointer;font-size:16px}
 .juz small{display:block;font-size:10px;font-weight:400;color:var(--mut)}
-.juz.busy{background:#3a2a14;border-color:var(--busy);cursor:default}
-.juz.done{background:#123d2c;border-color:var(--ok);cursor:default}
-.juz.mine{outline:2px solid var(--gold)}
+.juz.busy{background:#3a2a14;border-color:var(--busy)}
+.juz.done{background:#123d2c;border-color:var(--ok)}
+.juz.sel{box-shadow:0 0 0 2px var(--text)}
+.kh-list{margin-top:16px;border-top:1px solid #1f4a40;padding-top:8px}
+.kh-row{display:flex;gap:10px;align-items:baseline;padding:6px 0;font-size:14px}
+.kh-row b{color:var(--gold);white-space:nowrap}
+.kh-row span{color:var(--mut);flex:1;line-height:1.7}
+.kh-row.ok b{color:var(--ok)}
+.juz.mine{outline:2px solid var(--gold);cursor:pointer}
 .actions{display:none;margin-top:14px;text-align:center}
 .btn{background:var(--gold);color:#1b1608;border:none;border-radius:10px;padding:8px 18px;font-family:'IBM Plex Sans Arabic';font-weight:700;cursor:pointer;font-size:15px;margin:3px;text-decoration:none;display:inline-block}
 .btn.alt{background:transparent;color:var(--text);border:1px solid #2c6054}
 .ctrl{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:12px}
 select{background:var(--card2);color:var(--text);border:1px solid #2c6054;border-radius:10px;padding:8px 10px;font-family:'IBM Plex Sans Arabic';font-size:15px;max-width:100%}
-audio{width:100%;margin:8px 0}
+html::-webkit-scrollbar,#readerBody::-webkit-scrollbar{width:10px;height:10px}
+html::-webkit-scrollbar-track,#readerBody::-webkit-scrollbar-track{background:rgba(255,255,255,.04);border-radius:99px}
+#readerBody::-webkit-scrollbar-track{margin:8px 0}
+html::-webkit-scrollbar-thumb,#readerBody::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#e8c978,#b38a2e);border-radius:99px;border:2px solid transparent;background-clip:padding-box;min-height:48px}
+html::-webkit-scrollbar-thumb:hover,#readerBody::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#f4dc97,#c99a38);background-clip:padding-box;border:2px solid transparent}
+@supports (-moz-appearance:none){html,#readerBody{scrollbar-width:thin;scrollbar-color:#b38a2e rgba(255,255,255,.05)}}
+#readerBody{padding-inline-start:12px}
+.player{direction:ltr;background:var(--card2);border:1px solid #2c6054;border-radius:16px;padding:12px 14px 10px;margin:8px 0 14px;display:flex;flex-direction:column;gap:10px}
+.player.hidden{display:none}
+.p-seek{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mut);font-variant-numeric:tabular-nums}
+.p-seek span{min-width:44px;text-align:center}
+.p-ctrl{display:flex;align-items:center;justify-content:center;gap:14px}
+.p-ctrl button{border:none;cursor:pointer;font-family:'IBM Plex Sans Arabic',sans-serif;-webkit-tap-highlight-color:transparent}
+.pbtn{width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#e8c978,#b38a2e);color:#201a08;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 0 #7a5d1c;transition:transform .08s}
+.pbtn:active{transform:translateY(3px);box-shadow:0 1px 0 #7a5d1c}
+.pbtn.loading{animation:ppulse 1s ease-in-out infinite}
+@keyframes ppulse{50%{opacity:.55}}
+.pskip{width:42px;height:42px;border-radius:50%;background:transparent;color:var(--text);border:1px solid #2c6054!important;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.pskip:hover,.pspeed:hover{background:rgba(217,180,90,.12)}
+.pspeed{min-width:52px;height:34px;border-radius:99px;background:transparent;color:var(--gold);border:1px solid #2c6054!important;font-size:13px;font-weight:700;padding:0 10px}
+#pSeek{-webkit-appearance:none;appearance:none;flex:1;height:22px;background:transparent;cursor:pointer;margin:0}
+#pSeek:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:8px}
+#pSeek::-webkit-slider-runnable-track{height:6px;border-radius:99px;background:linear-gradient(to right,var(--gold) var(--p,0%),#2c6054 var(--p,0%))}
+#pSeek::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;margin-top:-5px;border-radius:50%;background:var(--gold);border:2px solid #0b1f1a;box-shadow:0 0 0 2px rgba(217,180,90,.4)}
+#pSeek::-moz-range-track{height:6px;border-radius:99px;background:#2c6054}
+#pSeek::-moz-range-progress{height:6px;border-radius:99px;background:var(--gold)}
+#pSeek::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:var(--gold);border:2px solid #0b1f1a;box-shadow:0 0 0 2px rgba(217,180,90,.4)}
 #readerBody{font-family:'Amiri',serif;font-size:28px;line-height:2.4;text-align:justify;max-height:70vh;overflow:auto;padding:6px 4px}
 #readerBody .sname{text-align:center;color:var(--gold);font-size:30px;border-top:1px solid #2c6054;border-bottom:1px solid #2c6054;margin:14px 0;padding:2px}
 .an{color:var(--gold);font-size:20px;margin:0 4px}
@@ -122,24 +154,39 @@ footer .f{font-family:'Amiri',serif;color:var(--text);font-size:18px}
 
 <section id="khatma">
   <h2>الختمة الجماعية</h2>
-  <p class="sub">احجز جزءًا واقرأه بنية الإهداء له، ثم علّم عليه «تم». لما الـ٣٠ جزء يخلصوا تبدأ ختمة جديدة تلقائي.</p>
+  <p class="sub">اضغط على أي جزء واقرأه بنية الإهداء له. ممكن تحجزه ٢٤ ساعة، وبعد ما تخلص علّم «تم». أكتر من واحد يقدر يقرا نفس الجزء وكل قراءة بتتحسب في ختمة.</p>
   <div class="card">
-    <div class="kh-head"><span>الختمة رقم <b id="khRound">1</b></span><span>·</span><span>تم <b id="khDone">0</b> / 30</span></div>
+    <div class="kh-head"><span>الختمة الحالية رقم <b id="khRound">1</b></span><span>·</span><span>تم <b id="khDone">0</b> / 30</span></div>
     <div class="juz-grid" id="juzGrid"></div>
     <div class="actions" id="juzActions"></div>
-    <p class="note">متاح — محجوز (برتقالي) — تم (أخضر). الأجزاء اللي حجزتها عليها إطار ذهبي.</p>
+    <div class="kh-list" id="khList"></div>
+    <p class="note">متاح — محجوز (برتقالي) — تم (أخضر). ×٢ يعني الجزء اتقرا مرتين. الأجزاء اللي حجزتها عليها إطار ذهبي.</p>
   </div>
 </section>
 
 <section id="quran">
   <h2>المصحف</h2>
-  <p class="sub">اقرأ واسمع بصوت مشاري العفاسي، واجعل نيّتك له.</p>
+  <p class="sub">اقرأ واسمع بصوت الشيخ علي جابر، واجعل نيّتك له.</p>
   <div class="card">
     <div class="ctrl">
       <select id="surahSel"><option>جاري التحميل…</option></select>
       <select id="juzSel"></select>
     </div>
-    <audio id="aud" controls preload="none" class="hidden"></audio>
+    <div class="player hidden" id="player">
+      <div class="p-seek">
+        <span id="pCur">٠٠:٠٠</span>
+        <input type="range" id="pSeek" min="0" max="1000" value="0" step="1" aria-label="موضع التشغيل">
+        <span id="pDur">--:--</span>
+      </div>
+      <div class="p-ctrl">
+        <button class="pspeed" id="pSpeed" aria-label="سرعة التشغيل">١×</button>
+        <button class="pskip" id="pBack" aria-label="رجوع ١٠ ثواني"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/><text x="12" y="15.5" font-size="7.5" text-anchor="middle" fill="currentColor" stroke="none" font-family="sans-serif" font-weight="700">10</text></svg></button>
+        <button class="pbtn" id="pPlay" aria-label="تشغيل"></button>
+        <button class="pskip" id="pFwd" aria-label="تقديم ١٠ ثواني"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/><text x="12" y="15.5" font-size="7.5" text-anchor="middle" fill="currentColor" stroke="none" font-family="sans-serif" font-weight="700">10</text></svg></button>
+        <span style="min-width:52px"></span>
+      </div>
+    </div>
+    <audio id="aud" preload="none"></audio>
     <div id="readerBody"><p class="note">اختر سورة أو جزءًا للقراءة.</p></div>
   </div>
 </section>
@@ -244,7 +291,13 @@ if (useFirebase) {
 const DH = [
   { id: 'tasbih', t: 'سبحان الله وبحمده' },
   { id: 'istighfar', t: 'أستغفر الله' },
-  { id: 'salawat', t: 'اللهم صلِّ وسلِّم على نبينا محمد' }
+  { id: 'salawat', t: 'اللهم صلِّ وسلِّم على نبينا محمد' },
+  { id: 'tahlil', t: 'لا إله إلا الله' },
+  { id: 'takbir', t: 'الله أكبر' },
+  { id: 'hamd', t: 'الحمد لله' },
+  { id: 'azim', t: 'سبحان الله العظيم' },
+  { id: 'hawqala', t: 'لا حول ولا قوة إلا بالله' },
+  { id: 'dua', t: 'اللهم اغفر له وارحمه' }
 ];
 const gCount = {}, pending = jget('pending', {}), mineC = jget('mineCounts', {});
 $('dhGrid').innerHTML = DH.map(d => `
@@ -295,20 +348,35 @@ addEventListener('pagehide', flush);
 paintCounts();
 
 /* ---------- الختمة الجماعية ---------- */
-let kh = {}, selJuz = null;
-function round() { return kh.round || 1; }
-function myJuz() { const m = jget('mineJuz', {}); return m.round === round() ? m.list : []; }
-function saveMy(list) { jset('mineJuz', { round: round(), list }); }
+/* كل جزء: n = عدد مرات القراءة، o/t = صاحب الحجز ووقته (الحجز ينتهي بعد ٢٤ ساعة).
+   الختمات الكاملة = أقل n بين الـ٣٠ جزء. */
+const DAY = 24 * 3600 * 1000;
+const ME = (() => { let u = jget('uid', null); if (!u) { u = Math.random().toString(36).slice(2) + Date.now().toString(36); jset('uid', u); } return u; })();
+let kh = {}, selJuz = null, prevM = null;
+const jnode = i => (kh.juz || {})['j' + i] || {};
+const cnt = i => jnode(i).n || 0;
+const resv = i => { const v = jnode(i); return v.o && v.t && Date.now() - v.t < DAY ? v : null; };
+const isMine = i => { const r = resv(i); return !!r && r.o === ME; };
+const hoursLeft = r => Math.max(1, Math.ceil((r.t + DAY - Date.now()) / 3600000));
+const times = c => c === 1 ? 'مرة واحدة' : c === 2 ? 'مرتين' : fmt(c) + (c <= 10 ? ' مرات' : ' مرة');
+function stats() { let m = Infinity, mx = 0; for (let i = 1; i <= 30; i++) { const c = cnt(i); if (c < m) m = c; if (c > mx) mx = c; } return { m, mx }; }
 function paintKhatma() {
-  const j = kh.juz || {}, mine = myJuz(); let done = 0, html = '';
+  const { m, mx } = stats(); let done = 0, html = '';
   for (let i = 1; i <= 30; i++) {
-    const s = j['j' + i] || 0; if (s === 2) done++;
-    const cls = (s === 2 ? 'done' : s === 1 ? 'busy' : '') + (mine.includes(i) ? ' mine' : '');
-    const lab = s === 2 ? 'تم' : s === 1 ? 'محجوز' : 'متاح';
+    const c = cnt(i), r = resv(i), isDone = c > m;
+    if (isDone) done++;
+    const cls = (isDone ? 'done' : r ? 'busy' : '') + (isMine(i) ? ' mine' : '') + (selJuz === i ? ' sel' : '');
+    const lab = isDone ? (c > 1 ? `تم ×${fmt(c)}` : 'تم') : r ? 'محجوز' : 'متاح';
     html += `<button class="juz ${cls}" data-j="${i}">${fmt(i)}<small>${lab}</small></button>`;
   }
   $('juzGrid').innerHTML = html;
-  $('khRound').textContent = fmt(round()); $('khDone').textContent = fmt(done); $('khTotal').textContent = fmt(kh.total || 0);
+  $('khRound').textContent = fmt(m + 1); $('khDone').textContent = fmt(done); $('khTotal').textContent = fmt(m);
+  let rows = m > 0 ? `<div class="kh-row ok"><b>اكتملت</b><span>${fmt(m)} ${m === 1 ? 'ختمة' : m === 2 ? 'ختمتين' : m <= 10 ? 'ختمات' : 'ختمة'} كاملة</span></div>` : '';
+  for (let k = m + 1; k <= Math.max(m + 1, mx); k++) {
+    const rem = []; for (let i = 1; i <= 30; i++) if (cnt(i) < k) rem.push(i);
+    rows += `<div class="kh-row"><b>ختمة ${fmt(k)}</b><span>فاضل ${fmt(rem.length)} ${rem.length > 10 ? 'جزء' : rem.length === 1 ? 'جزء' : 'أجزاء'}: ${rem.map(fmt).join('، ')}</span></div>`;
+  }
+  $('khList').innerHTML = rows;
   paintActions();
 }
 const CONN_ERR = 'الاتصال ضعيف أو مقطوع. اتأكد من الإنترنت وحاول تاني.';
@@ -318,61 +386,100 @@ function guard() {
   return !busy;
 }
 function paintActions() {
-  const box = $('juzActions'), mine = myJuz();
-  if (!selJuz || !mine.includes(selJuz) || (kh.juz || {})['j' + selJuz] !== 1) { box.style.display = 'none'; return; }
+  const box = $('juzActions');
+  if (!selJuz) { box.style.display = 'none'; return; }
+  const n = selJuz, c = cnt(n), r = resv(n), mine = isMine(n);
+  const readInfo = c ? `اتقرا ${times(c)}` : 'لسه ما اتقرأش';
+  const resInfo = !r ? 'متاح للحجز.'
+    : mine ? `محجوز باسمك، وبينتهي حجزك بعد حوالي ${fmt(hoursLeft(r))} ساعة.`
+    : `محجوز لحد تاني ولسه ما علّمش «تم». الحجز بيتفك بعد حوالي ${fmt(hoursLeft(r))} ساعة. تقدر تقراه وتعلّم «تم» وقراءتك هتتحسب.`;
   box.style.display = 'block';
-  box.innerHTML = `<div>الجزء ${fmt(selJuz)}</div>
-    <button class="btn" id="aRead">اقرأه الآن</button>
-    <button class="btn" id="aDone">تم ✓</button>
-    <button class="btn alt" id="aCancel">إلغاء الحجز</button>`;
-  $('aRead').onclick = () => { $('juzSel').value = selJuz; $('surahSel').value = ''; openJuz(selJuz); $('quran').scrollIntoView(); };
-  $('aDone').onclick = () => markDone(selJuz);
-  $('aCancel').onclick = () => cancelJuz(selJuz);
+  box.innerHTML = `<div><b>الجزء ${fmt(n)}</b> — ${readInfo}</div>
+    <p class="note" style="margin:6px 0 10px">${resInfo}</p>
+    <button class="btn" id="aRead">اقرأه</button>
+    ${!r ? '<button class="btn" id="aReserve">احجزه ليا (٢٤ ساعة)</button>' : ''}
+    <button class="btn" id="aDone">${mine ? 'تم ✓' : 'قرأته ✓ تم'}</button>
+    ${mine ? '<button class="btn alt" id="aCancel">إلغاء الحجز</button>' : ''}`;
+  $('aRead').onclick = () => { $('juzSel').value = n; $('surahSel').value = ''; openJuz(n); $('quran').scrollIntoView(); };
+  if ($('aReserve')) $('aReserve').onclick = () => reserveJuz(n);
+  $('aDone').onclick = () => markDone(n);
+  if ($('aCancel')) $('aCancel').onclick = () => cancelJuz(n);
+}
+async function reserveJuz(n) {
+  if (!guard()) return; busy = true;
+  const r = await DB.tx('khatma2/juz/j' + n, v => {
+    v = v || {};
+    if (v.o && v.t && v.o !== ME && Date.now() - v.t < DAY) return undefined;
+    const o = {}; if (v.n) o.n = v.n; o.o = ME; o.t = Date.now(); return o;
+  }, 12000); busy = false;
+  if (r === true) toast(`تم حجز الجزء ${fmt(n)} باسمك لمدة ٢٤ ساعة. اقرأه بنية الإهداء له، وبعد ما تخلص اضغط «تم ✓».`, 'ok');
+  else if (r === 'error') toast(CONN_ERR, 'err');
+  else toast(`الجزء ${fmt(n)} اتحجز لحد تاني من لحظات.`, 'err');
 }
 async function markDone(n) {
+  if (!confirm(`تأكيد: قرأت الجزء ${fmt(n)} كامل وعايز تعلّمه «تم»؟`)) return;
   if (!guard()) return; busy = true;
-  const r = await DB.tx('khatma/juz/j' + n, v => v === 1 ? 2 : undefined, 12000); busy = false;
-  if (r === true) {
-    saveMy(myJuz().filter(x => x !== n)); selJuz = null; paintKhatma();
-    const full = await checkComplete();
-    toast(full ? 'الحمد لله، اتمّت ختمة كاملة له! بدأت ختمة جديدة تلقائي. جزاكم الله خيرًا.' : `تقبّل الله منك. اتعلّم الجزء ${fmt(n)} «تم».`, 'ok');
-  } else if (r === 'error') toast(CONN_ERR, 'err');
-  else toast('حالة الجزء اتغيّرت ومبقاش محجوز باسمك. حدّث الصفحة وحاول تاني.', 'err');
+  const before = stats().m;
+  const r = await DB.tx('khatma2/juz/j' + n, v => {
+    v = v || {};
+    const o = { n: (v.n || 0) + 1 };
+    if (v.o && v.o !== ME && v.t && Date.now() - v.t < DAY) { o.o = v.o; o.t = v.t; }
+    return o;
+  }, 12000); busy = false;
+  if (r === true) { if (stats().m === before) toast(`تقبّل الله منك. اتحسبت قراءتك للجزء ${fmt(n)}.`, 'ok'); }
+  else toast(CONN_ERR, 'err');
 }
 async function cancelJuz(n) {
   if (!guard()) return; busy = true;
-  const r = await DB.tx('khatma/juz/j' + n, v => v === 1 ? null : undefined, 12000); busy = false;
-  if (r === true) { saveMy(myJuz().filter(x => x !== n)); selJuz = null; paintKhatma(); toast(`اتلغى حجز الجزء ${fmt(n)}. بقى متاح لأي حد.`, 'info'); }
+  const r = await DB.tx('khatma2/juz/j' + n, v => (!v || v.o !== ME) ? undefined : (v.n ? { n: v.n } : null), 12000); busy = false;
+  if (r === true) toast(`اتلغى حجز الجزء ${fmt(n)}. بقى متاح لأي حد.`, 'info');
   else if (r === 'error') toast(CONN_ERR, 'err');
-  else toast('الجزء ده مش محجوز باسمك. حدّث الصفحة وحاول تاني.', 'err');
+  else toast('الجزء ده مش محجوز باسمك.', 'err');
 }
-$('juzGrid').addEventListener('click', async e => {
+$('juzGrid').addEventListener('click', e => {
   const b = e.target.closest('.juz'); if (!b) return;
-  const n = +b.dataset.j, s = (kh.juz || {})['j' + n] || 0, mine = myJuz().includes(n);
-  if (s === 2) { toast(`الجزء ${fmt(n)} اتختم بالفعل، جزاكم الله خيرًا. اختار جزء متاح.`, 'info'); return; }
-  if (s === 1) {
-    if (mine) { selJuz = n; paintActions(); } else toast(`الجزء ${fmt(n)} محجوز لحد تاني. اختار جزء متاح.`, 'info');
-    return;
-  }
-  if (!guard()) return; busy = true;
-  const r = await DB.tx('khatma/juz/j' + n, v => !v ? 1 : undefined, 12000); busy = false;
-  if (r === true) {
-    saveMy([...myJuz(), n]); selJuz = n; paintKhatma();
-    toast(`تم حجز الجزء ${fmt(n)} باسمك. اقرأه بنية الإهداء له، وبعد ما تخلص اضغط «تم ✓».`, 'ok');
-  } else if (r === 'error') toast(CONN_ERR, 'err');
-  else toast(`الجزء ${fmt(n)} اتحجز لحد تاني من لحظات. اختار جزء تاني.`, 'err');
+  const n = +b.dataset.j; selJuz = selJuz === n ? null : n; paintKhatma();
+  if (selJuz) $('juzActions').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 });
-function checkComplete() {
-  return DB.tx('khatma', cur => {
-    cur = cur || {}; const j = cur.juz || {};
-    for (let i = 1; i <= 30; i++) if (j['j' + i] !== 2) return undefined;
-    return { round: (cur.round || 1) + 1, total: (cur.total || 0) + 1 };
-  }, 12000).then(r => r === true);
-}
-DB.watch('khatma', v => { kh = v || {}; paintKhatma(); });
+DB.watch('khatma2', v => {
+  kh = v || {}; const { m } = stats();
+  if (prevM !== null && m > prevM) toast('الحمد لله، اتمّت ختمة كاملة له! جزاكم الله خيرًا.', 'ok');
+  prevM = m; paintKhatma();
+});
+setInterval(paintKhatma, 60000);
+
+/* ---------- تحديث تلقائي للنسخة ----------
+   غيّر رقم النسخة ده مع كل رفع جديد، وأي حد فاتح الصفحة هتتحدّث له لوحدها. */
+const APP_VERSION = '2026-10-28-1';
+if (location.search.indexOf('_u=') > -1 && history.replaceState) history.replaceState(null, '', location.pathname + location.hash);
+(function autoUpdate() {
+  if (!/^https?:$/.test(location.protocol)) return;
+  let checking = false;
+  async function check() {
+    if (checking || document.hidden || !navigator.onLine) return;
+    checking = true;
+    try {
+      const res = await fetch(location.pathname + '?_v=' + Date.now(), { cache: 'no-store' });
+      const m = (await res.text()).match(/const APP_VERSION = '([^']+)'/);
+      if (m && m[1] !== APP_VERSION) {
+        const playing = [...document.querySelectorAll('audio')].some(a => !a.paused && !a.ended);
+        let tried = null; try { tried = sessionStorage.getItem('reloadedFor'); } catch (e) {}
+        if (!busy && !playing && tried !== m[1]) {
+          try { sessionStorage.setItem('reloadedFor', m[1]); } catch (e) {}
+          toast('في نسخة جديدة من الموقع، بنحدّث الصفحة...', 'info');
+          setTimeout(() => location.replace(location.pathname + '?_u=' + encodeURIComponent(m[1]) + location.hash), 1500);
+        }
+      }
+    } catch (e) {}
+    checking = false;
+  }
+  setInterval(check, 60000);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) check(); });
+  window.addEventListener('focus', check);
+})();
 
 /* ---------- المصحف ---------- */
-const AUDIO = n => `https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/${n}.mp3`;
+const AUDIO = n => `https://server11.mp3quran.net/a_jbr/${String(n).padStart(3, '0')}.mp3`; // الشيخ علي جابر
 const body = $('readerBody'), aud = $('aud');
 const ayaNum = n => `<span class="an">﴿${n.toLocaleString('ar-EG')}﴾</span>`;
 $('juzSel').innerHTML = '<option value="">اختر جزءًا…</option>' + Array.from({ length: 30 }, (_, i) => `<option value="${i + 1}">الجزء ${fmt(i + 1)}</option>`).join('');
@@ -388,7 +495,8 @@ async function openSurah(n) {
   try {
     const d = await api(`surah/${n}/quran-uthmani`);
     body.innerHTML = `<div class="sname">${d.name}</div>` + d.ayahs.map(a => a.text + ' ' + ayaNum(a.numberInSurah)).join(' ');
-    aud.src = AUDIO(n); aud.classList.remove('hidden'); body.scrollTop = 0;
+    aud.src = AUDIO(n); $('player').classList.remove('hidden'); body.scrollTop = 0;
+    if ('mediaSession' in navigator && window.MediaMetadata) navigator.mediaSession.metadata = new MediaMetadata({ title: d.name, artist: 'الشيخ علي جابر', album: 'صدقة جارية' });
   } catch (e) { loadErr(() => openSurah(n)); }
 }
 async function openJuz(n) {
@@ -396,7 +504,7 @@ async function openJuz(n) {
   try {
     const d = await api(`juz/${n}/quran-uthmani`);
     body.innerHTML = d.ayahs.map(a => (a.numberInSurah === 1 ? `<div class="sname">${a.surah.name}</div>` : '') + a.text + ' ' + ayaNum(a.numberInSurah)).join(' ');
-    aud.pause(); aud.classList.add('hidden'); body.scrollTop = 0;
+    aud.pause(); $('player').classList.add('hidden'); body.scrollTop = 0;
   } catch (e) { loadErr(() => openJuz(n)); }
 }
 function loadSurahs() {
@@ -406,6 +514,38 @@ function loadSurahs() {
   }).catch(() => { $('surahSel').innerHTML = '<option value="">تعذّر تحميل السور</option><option value="retry">إعادة المحاولة</option>'; });
 }
 loadSurahs();
+/* ---------- مشغّل الصوت ---------- */
+const pPlay = $('pPlay'), pSeek = $('pSeek'), pCur = $('pCur'), pDur = $('pDur'), pSpeed = $('pSpeed');
+const ICON_PLAY = '<svg viewBox="0 0 24 24" width="26" height="26"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>';
+const ICON_PAUSE = '<svg viewBox="0 0 24 24" width="26" height="26"><path d="M7 5h3.6v14H7zm6.4 0H17v14h-3.6z" fill="currentColor"/></svg>';
+const two = x => x.toLocaleString('ar-EG', { minimumIntegerDigits: 2, useGrouping: false });
+const tfmt = t => { t = isFinite(t) && t > 0 ? Math.floor(t) : 0; const h = Math.floor(t / 3600), m = Math.floor(t % 3600 / 60), s = t % 60; return (h ? fmt(h) + ':' : '') + two(m) + ':' + two(s); };
+function pPaint() {
+  const d = isFinite(aud.duration) ? aud.duration : 0, c = aud.currentTime || 0;
+  pCur.textContent = tfmt(c); pDur.textContent = d ? tfmt(d) : '--:--';
+  pSeek.value = d ? Math.round(c / d * 1000) : 0;
+  pSeek.style.setProperty('--p', (d ? c / d * 100 : 0) + '%');
+}
+function pState() { const on = !aud.paused && !aud.ended; pPlay.innerHTML = on ? ICON_PAUSE : ICON_PLAY; pPlay.setAttribute('aria-label', on ? 'إيقاف مؤقت' : 'تشغيل'); }
+['timeupdate', 'loadedmetadata', 'durationchange', 'emptied'].forEach(ev => aud.addEventListener(ev, pPaint));
+['play', 'pause', 'ended', 'emptied'].forEach(ev => aud.addEventListener(ev, pState));
+aud.addEventListener('waiting', () => pPlay.classList.add('loading'));
+['playing', 'canplay', 'pause', 'emptied', 'error'].forEach(ev => aud.addEventListener(ev, () => pPlay.classList.remove('loading')));
+pPlay.onclick = () => { if (aud.paused) aud.play().catch(() => toast('تعذّر تشغيل الصوت. اتأكد من الإنترنت وحاول تاني.', 'err')); else aud.pause(); };
+$('pBack').onclick = () => { aud.currentTime = Math.max(0, aud.currentTime - 10); };
+$('pFwd').onclick = () => { aud.currentTime = Math.min(isFinite(aud.duration) ? aud.duration : Infinity, aud.currentTime + 10); };
+pSeek.addEventListener('input', () => { if (isFinite(aud.duration) && aud.duration) { aud.currentTime = pSeek.value / 1000 * aud.duration; pPaint(); } });
+const SPEEDS = [1, 1.25, 1.5, 0.75]; let spIdx = 0;
+pSpeed.onclick = () => { spIdx = (spIdx + 1) % SPEEDS.length; aud.defaultPlaybackRate = aud.playbackRate = SPEEDS[spIdx]; pSpeed.textContent = fmt(SPEEDS[spIdx]) + '×'; };
+if ('mediaSession' in navigator) {
+  try {
+    navigator.mediaSession.setActionHandler('play', () => aud.play());
+    navigator.mediaSession.setActionHandler('pause', () => aud.pause());
+    navigator.mediaSession.setActionHandler('seekbackward', () => { aud.currentTime = Math.max(0, aud.currentTime - 10); });
+    navigator.mediaSession.setActionHandler('seekforward', () => { aud.currentTime += 10; });
+  } catch (e) {}
+}
+pState(); pPaint();
 aud.addEventListener('error', () => { if (aud.getAttribute('src')) toast('تعذّر تشغيل الصوت. اتأكد من الإنترنت وحاول تاني.', 'err'); });
 $('surahSel').onchange = e => {
   const v = e.target.value;
