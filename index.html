@@ -177,16 +177,78 @@ footer .f{font-family:'Amiri',serif;color:var(--text);font-size:18px}
 .c-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .c-btns .btn{min-width:130px}
 .c-btns .btn:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+#season{max-width:640px;margin:20px auto 0;padding:0 14px}
+#season.hidden{display:none}
+.se{background:var(--card2);border:1px solid var(--gold);border-radius:14px;padding:12px 16px;margin-bottom:10px;text-align:center}
+.se b{display:block;font-family:'Aref Ruqaa',serif;color:var(--gold);font-size:22px}
+.se span{display:block;font-size:14px;color:var(--text);margin:4px 0 6px;line-height:1.8}
+.se.gold{background:var(--gold)}
+.se.gold b,.se.gold span{color:#1a1a1a}
+.p-top{display:flex;justify-content:center;margin-bottom:12px}
+.p-next{text-align:center;font-size:17px;margin-bottom:12px}
+.p-next b{color:var(--gold)}
+.p-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.pt{background:var(--card2);border:1px solid #2c6054;border-radius:12px;padding:8px 2px;text-align:center}
+.pt span{display:block;font-size:13px;color:var(--mut)}
+.pt b{font-size:14px;color:var(--text);white-space:nowrap}
+.pt.nx{border-color:var(--gold);background:rgba(217,180,90,.12)}
+.pt.nx b{color:var(--gold)}
+@media(max-width:480px){.p-grid{grid-template-columns:repeat(3,1fr)}}
+#pbar{background:var(--gold);color:#1a1a1a;text-align:center;padding:8px 38px 8px 12px;font-weight:700;font-size:14px;position:relative}
+#pbar.hidden{display:none}
+#pbar button{position:absolute;left:8px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:24px;cursor:pointer;color:#1a1a1a;line-height:1}
+.rtools{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;margin-bottom:10px}
+.rtools .btn{font-size:13px;padding:5px 12px}
+#rtSize{min-width:28px;text-align:center;color:var(--mut);font-size:13px}
+#readerBody[data-rt="warm"]{background:#f4ecd8;color:#2e2415;border-radius:12px;padding:10px 14px}
+#readerBody[data-rt="warm"] .sname{color:#8a6a1c;border-color:#d9c79b}
+#readerBody[data-rt="warm"] .ay:hover{background:rgba(138,106,28,.1)}
+#readerBody[data-rt="warm"] .ay.sel{background:rgba(138,106,28,.2)}
+#readerBody[data-rt="warm"] .ay.bm{background:rgba(138,106,28,.14);box-shadow:inset -3px 0 0 #8a6a1c}
+#readerBody[data-rt="black"]{background:#000;color:#e8e2cf;border-radius:12px;padding:10px 14px}
+#readerBody[data-rt="black"] .sname{border-color:#333}
+.sbox{background:var(--card);border:1px solid #1f4a40;border-radius:14px;padding:12px 6px;text-align:center}
+.sbox b{display:block;font-family:'Aref Ruqaa',serif;font-size:26px;color:var(--gold);line-height:1.4}
+.sbox span{font-size:12px;color:var(--mut)}
+.sbox small{display:block;font-size:11px;color:var(--ok)}
+.st-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:14px}
+.ch{background:var(--card);border:1px solid #1f4a40;border-radius:14px;padding:12px;margin-bottom:12px}
+.ch-t{font-size:14px;color:var(--gold);margin-bottom:8px;text-align:center}
+.ch-b{display:flex;gap:6px;align-items:flex-end;justify-content:space-between;direction:ltr}
+.ch-c{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0}
+.ch-c i{display:block;width:100%;max-width:34px;background:linear-gradient(180deg,#e8c978,#b38a2e);border-radius:6px 6px 0 0;min-height:2px}
+.ch-v{font-size:11px;color:var(--text)}
+.ch-l{font-size:11px;color:var(--mut)}
+.hbar{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:13px}
+.hbar em{font-style:normal;flex:0 0 40%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hbar div{flex:1;height:10px;background:#1b4137;border-radius:99px;overflow:hidden}
+.hbar i{display:block;height:100%;background:linear-gradient(90deg,#b38a2e,#e8c978);border-radius:99px}
+.hbar b{min-width:34px;text-align:left;color:var(--gold);font-size:12px}
+.cmp{display:flex;justify-content:space-between;gap:8px;font-size:13px;padding:4px 0;border-bottom:1px dashed #1f4a40}
+.cmp:last-child{border:none}
+.cmp b{color:var(--gold)}
+#printArea{display:none}
+@media print{
+  body>*{display:none!important}
+  body>#printArea{display:block!important}
+  #printArea img{width:100%;height:auto;display:block}
+  @page{size:A5;margin:0}
+}
+nav a.live{display:inline-flex;align-items:center;gap:7px;border:1px solid #2c6054;background:rgba(61,220,132,.08)}
+nav a.live.hidden{display:none}
+.live i{width:8px;height:8px;border-radius:50%;background:#3ddc84;box-shadow:0 0 0 0 rgba(61,220,132,.7);animation:lpulse 1.8s infinite}
+@keyframes lpulse{70%{box-shadow:0 0 0 7px rgba(61,220,132,0)}100%{box-shadow:0 0 0 0 rgba(61,220,132,0)}}
 </style>
 </head>
 <body>
 <div id="anniv"></div>
 <div id="toast" role="status" aria-live="polite"></div>
 <div id="cfm" class="hidden" role="alertdialog" aria-modal="true" aria-labelledby="cfmT"><div class="m-box c-box"><div class="c-ico"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><h3 id="cfmT"></h3><p id="cfmP"></p><div class="c-btns"><button class="btn" id="cfmOk"></button><button class="btn alt" id="cfmNo"></button></div></div></div>
-<div id="modal" class="hidden" role="dialog" aria-modal="true"><div class="m-box"><img id="mImg" alt="بطاقة المشاركة"><p id="mMsg"></p><button class="btn" id="mShare">شارك</button><button class="btn alt" id="mSave">حفظ الصورة</button><button class="btn alt" id="mClose">إغلاق</button></div></div>
+<div id="modal" class="hidden" role="dialog" aria-modal="true"><div class="m-box"><img id="mImg" alt="بطاقة المشاركة"><p id="mMsg"></p><button class="btn" id="mShare">شارك</button><button class="btn alt" id="mSave">حفظ الصورة</button><button class="btn alt hidden" id="mPrint">طباعة</button><button class="btn alt hidden" id="mStyle"></button><button class="btn alt" id="mClose">إغلاق</button></div></div>
 <nav>
-  <a href="#top">الرئيسية</a><a href="#dhikr">الأذكار</a><a href="#khatma">الختمة</a><a href="#quran">المصحف</a><a href="#adhkar">أذكار اليوم</a><a href="#dua">الدعاء</a>
+  <a href="#stats" id="livePill" class="live hidden" title="عدد المتصلين الآن"><i></i><span id="liveT"></span></a><a href="#top">الرئيسية</a><a href="#dhikr">الأذكار</a><a href="#khatma">الختمة</a><a href="#quran">المصحف</a><a href="#prayer">الصلاة</a><a href="#adhkar">أذكار اليوم</a><a href="#dua">الدعاء</a>
 </nav>
+<div id="pbar" class="hidden"><span id="pbarT"></span><button id="pbarX" aria-label="إغلاق">×</button></div>
 <main id="top">
 
 <header class="hero">
@@ -205,6 +267,7 @@ footer .f{font-family:'Amiri',serif;color:var(--text);font-size:18px}
   </div>
   <p class="note" id="localNote" style="display:none">ملاحظة: الموقع في الوضع التجريبي، العدّادات والختمة محفوظة على جهازك بس.</p>
 </header>
+<div id="season" class="hidden"></div>
 
 <section id="dhikr">
   <h2>اذكر الله له</h2>
@@ -253,6 +316,13 @@ footer .f{font-family:'Amiri',serif;color:var(--text);font-size:18px}
       </div>
     </div>
     <audio id="aud" preload="none"></audio>
+    <div class="rtools" id="rtools">
+      <button class="btn alt" id="fMinus" aria-label="تصغير الخط">أ−</button>
+      <span id="rtSize">٢٨</span>
+      <button class="btn alt" id="fPlus" aria-label="تكبير الخط">أ+</button>
+      <button class="btn alt" id="rtTheme">الوضع: افتراضي</button>
+      <button class="btn alt hidden" id="rtWake">منع انطفاء الشاشة: مقفول</button>
+    </div>
     <div class="resume" id="resume"></div>
     <div id="readerBody"><p class="note">اختر سورة أو جزءًا للقراءة. اضغط على أي آية لتشوف تفسيرها وتحط علامة عندها.</p></div>
     <div class="ay-panel hidden" id="ayPanel">
@@ -261,6 +331,17 @@ footer .f{font-family:'Amiri',serif;color:var(--text);font-size:18px}
       <p class="ay-note">التفسير الميسّر</p>
       <button class="btn" id="ayBm">علّم هنا</button>
     </div>
+  </div>
+</section>
+
+<section id="prayer">
+  <h2>مواقيت الصلاة</h2>
+  <p class="sub">بعد كل صلاة ادعُ له: «اللهم اغفر له وارحمه».</p>
+  <div class="card">
+    <div class="p-top"><div id="cityDD"></div></div>
+    <div class="p-next" id="pNext">…</div>
+    <div class="p-grid" id="pGrid"></div>
+    <p class="note" id="pNote"></p>
   </div>
 </section>
 
@@ -279,14 +360,26 @@ footer .f{font-family:'Amiri',serif;color:var(--text);font-size:18px}
   <div class="card"><div class="dua-day" id="duaDay"></div></div>
 </section>
 
+<section id="stats" class="hidden">
+  <h2>إحصائيات الموقع</h2>
+  <p class="sub">أرقام مجمّعة بدون أي بيانات شخصية، وبتبدأ من يوم تفعيل الإحصائيات.</p>
+  <div id="stBody"><p class="note">جاري التحميل…</p></div>
+  <p class="note"><a href="#top" style="color:var(--gold)">رجوع للموقع</a></p>
+</section>
+
 <a class="share" href="#" id="shareBtn"><span class="btn">شارك الموقع على واتساب</span></a>
-<div style="text-align:center;margin:10px 0 20px"><button class="btn alt hidden" id="installBtn">ثبّت الموقع كتطبيق</button></div>
+<div style="text-align:center;margin:10px 0 20px"><button class="btn alt" id="qrBtn">اطبع بطاقة الموقع (QR)</button><button class="btn alt hidden" id="installBtn">ثبّت الموقع كتطبيق</button></div>
 </main>
 
 <footer>
   <div class="f">اللهم اجعل هذا العمل في ميزان حسنات عبدالله ابراهيم فاروز محمد البيلي</div>
   <div>لا تنسوه من صالح دعائكم</div>
+  <div style="font-size:11px;margin-top:8px">الموقع بيحسب عدد الزوار والمدن بشكل مجمّع بدون تخزين أي بيانات شخصية.</div>
 </footer>
+<div id="printArea"><img id="printImg" alt=""></div>
+<script>/* qrcode-generator (MIT) © Kazuhiko Arase */
+var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],f={},c=function(t,r){o=function(t){for(var r=new Array(t),e=0;e<t;e+=1){r[e]=new Array(t);for(var n=0;n<t;n+=1)r[e][n]=null}return r}(i=4*e+17),l(0,0),l(i-7,0),l(0,i-7),s(),h(),d(t,r),e>=7&&v(t),null==a&&(a=p(e,n,u)),w(a,r)},l=function(t,r){for(var e=-1;e<=7;e+=1)if(!(t+e<=-1||i<=t+e))for(var n=-1;n<=7;n+=1)r+n<=-1||i<=r+n||(o[t+e][r+n]=0<=e&&e<=6&&(0==n||6==n)||0<=n&&n<=6&&(0==e||6==e)||2<=e&&e<=4&&2<=n&&n<=4)},h=function(){for(var t=8;t<i-8;t+=1)null==o[t][6]&&(o[t][6]=t%2==0);for(var r=8;r<i-8;r+=1)null==o[6][r]&&(o[6][r]=r%2==0)},s=function(){for(var t=B.getPatternPosition(e),r=0;r<t.length;r+=1)for(var n=0;n<t.length;n+=1){var i=t[r],a=t[n];if(null==o[i][a])for(var u=-2;u<=2;u+=1)for(var f=-2;f<=2;f+=1)o[i+u][a+f]=-2==u||2==u||-2==f||2==f||0==u&&0==f}},v=function(t){for(var r=B.getBCHTypeNumber(e),n=0;n<18;n+=1){var a=!t&&1==(r>>n&1);o[Math.floor(n/3)][n%3+i-8-3]=a}for(n=0;n<18;n+=1){a=!t&&1==(r>>n&1);o[n%3+i-8-3][Math.floor(n/3)]=a}},d=function(t,r){for(var e=n<<3|r,a=B.getBCHTypeInfo(e),u=0;u<15;u+=1){var f=!t&&1==(a>>u&1);u<6?o[u][8]=f:u<8?o[u+1][8]=f:o[i-15+u][8]=f}for(u=0;u<15;u+=1){f=!t&&1==(a>>u&1);u<8?o[8][i-u-1]=f:u<9?o[8][15-u-1+1]=f:o[8][15-u-1]=f}o[i-8][8]=!t},w=function(t,r){for(var e=-1,n=i-1,a=7,u=0,f=B.getMaskFunction(r),c=i-1;c>0;c-=2)for(6==c&&(c-=1);;){for(var g=0;g<2;g+=1)if(null==o[n][c-g]){var l=!1;u<t.length&&(l=1==(t[u]>>>a&1)),f(n,c-g)&&(l=!l),o[n][c-g]=l,-1==(a-=1)&&(u+=1,a=7)}if((n+=e)<0||i<=n){n-=e,e=-e;break}}},p=function(t,r,e){for(var n=A.getRSBlocks(t,r),o=b(),i=0;i<e.length;i+=1){var a=e[i];o.put(a.getMode(),4),o.put(a.getLength(),B.getLengthInBits(a.getMode(),t)),a.write(o)}var u=0;for(i=0;i<n.length;i+=1)u+=n[i].dataCount;if(o.getLengthInBits()>8*u)throw"code length overflow. ("+o.getLengthInBits()+">"+8*u+")";for(o.getLengthInBits()+4<=8*u&&o.put(0,4);o.getLengthInBits()%8!=0;)o.putBit(!1);for(;!(o.getLengthInBits()>=8*u||(o.put(236,8),o.getLengthInBits()>=8*u));)o.put(17,8);return function(t,r){for(var e=0,n=0,o=0,i=new Array(r.length),a=new Array(r.length),u=0;u<r.length;u+=1){var f=r[u].dataCount,c=r[u].totalCount-f;n=Math.max(n,f),o=Math.max(o,c),i[u]=new Array(f);for(var g=0;g<i[u].length;g+=1)i[u][g]=255&t.getBuffer()[g+e];e+=f;var l=B.getErrorCorrectPolynomial(c),h=k(i[u],l.getLength()-1).mod(l);for(a[u]=new Array(l.getLength()-1),g=0;g<a[u].length;g+=1){var s=g+h.getLength()-a[u].length;a[u][g]=s>=0?h.getAt(s):0}}var v=0;for(g=0;g<r.length;g+=1)v+=r[g].totalCount;var d=new Array(v),w=0;for(g=0;g<n;g+=1)for(u=0;u<r.length;u+=1)g<i[u].length&&(d[w]=i[u][g],w+=1);for(g=0;g<o;g+=1)for(u=0;u<r.length;u+=1)g<a[u].length&&(d[w]=a[u][g],w+=1);return d}(o,n)};f.addData=function(t,r){var e=null;switch(r=r||"Byte"){case"Numeric":e=M(t);break;case"Alphanumeric":e=x(t);break;case"Byte":e=m(t);break;case"Kanji":e=L(t);break;default:throw"mode:"+r}u.push(e),a=null},f.isDark=function(t,r){if(t<0||i<=t||r<0||i<=r)throw t+","+r;return o[t][r]},f.getModuleCount=function(){return i},f.make=function(){if(e<1){for(var t=1;t<40;t++){for(var r=A.getRSBlocks(t,n),o=b(),i=0;i<u.length;i++){var a=u[i];o.put(a.getMode(),4),o.put(a.getLength(),B.getLengthInBits(a.getMode(),t)),a.write(o)}var g=0;for(i=0;i<r.length;i++)g+=r[i].dataCount;if(o.getLengthInBits()<=8*g)break}e=t}c(!1,function(){for(var t=0,r=0,e=0;e<8;e+=1){c(!0,e);var n=B.getLostPoint(f);(0==e||t>n)&&(t=n,r=e)}return r}())},f.createTableTag=function(t,r){t=t||2;var e="";e+='<table style="',e+=" border-width: 0px; border-style: none;",e+=" border-collapse: collapse;",e+=" padding: 0px; margin: "+(r=void 0===r?4*t:r)+"px;",e+='">',e+="<tbody>";for(var n=0;n<f.getModuleCount();n+=1){e+="<tr>";for(var o=0;o<f.getModuleCount();o+=1)e+='<td style="',e+=" border-width: 0px; border-style: none;",e+=" border-collapse: collapse;",e+=" padding: 0px; margin: 0px;",e+=" width: "+t+"px;",e+=" height: "+t+"px;",e+=" background-color: ",e+=f.isDark(n,o)?"#000000":"#ffffff",e+=";",e+='"/>';e+="</tr>"}return e+="</tbody>",e+="</table>"},f.createSvgTag=function(t,r,e,n){var o={};"object"==typeof arguments[0]&&(t=(o=arguments[0]).cellSize,r=o.margin,e=o.alt,n=o.title),t=t||2,r=void 0===r?4*t:r,(e="string"==typeof e?{text:e}:e||{}).text=e.text||null,e.id=e.text?e.id||"qrcode-description":null,(n="string"==typeof n?{text:n}:n||{}).text=n.text||null,n.id=n.text?n.id||"qrcode-title":null;var i,a,u,c,g=f.getModuleCount()*t+2*r,l="";for(c="l"+t+",0 0,"+t+" -"+t+",0 0,-"+t+"z ",l+='<svg version="1.1" xmlns="http://www.w3.org/2000/svg"',l+=o.scalable?"":' width="'+g+'px" height="'+g+'px"',l+=' viewBox="0 0 '+g+" "+g+'" ',l+=' preserveAspectRatio="xMinYMin meet"',l+=n.text||e.text?' role="img" aria-labelledby="'+y([n.id,e.id].join(" ").trim())+'"':"",l+=">",l+=n.text?'<title id="'+y(n.id)+'">'+y(n.text)+"</title>":"",l+=e.text?'<description id="'+y(e.id)+'">'+y(e.text)+"</description>":"",l+='<rect width="100%" height="100%" fill="white" cx="0" cy="0"/>',l+='<path d="',a=0;a<f.getModuleCount();a+=1)for(u=a*t+r,i=0;i<f.getModuleCount();i+=1)f.isDark(a,i)&&(l+="M"+(i*t+r)+","+u+c);return l+='" stroke="transparent" fill="black"/>',l+="</svg>"},f.createDataURL=function(t,r){t=t||2,r=void 0===r?4*t:r;var e=f.getModuleCount()*t+2*r,n=r,o=e-r;return I(e,e,function(r,e){if(n<=r&&r<o&&n<=e&&e<o){var i=Math.floor((r-n)/t),a=Math.floor((e-n)/t);return f.isDark(a,i)?0:1}return 1})},f.createImgTag=function(t,r,e){t=t||2,r=void 0===r?4*t:r;var n=f.getModuleCount()*t+2*r,o="";return o+="<img",o+=' src="',o+=f.createDataURL(t,r),o+='"',o+=' width="',o+=n,o+='"',o+=' height="',o+=n,o+='"',e&&(o+=' alt="',o+=y(e),o+='"'),o+="/>"};var y=function(t){for(var r="",e=0;e<t.length;e+=1){var n=t.charAt(e);switch(n){case"<":r+="&lt;";break;case">":r+="&gt;";break;case"&":r+="&amp;";break;case'"':r+="&quot;";break;default:r+=n}}return r};return f.createASCII=function(t,r){if((t=t||1)<2)return function(t){t=void 0===t?2:t;var r,e,n,o,i,a=1*f.getModuleCount()+2*t,u=t,c=a-t,g={"██":"█","█ ":"▀"," █":"▄","  ":" "},l={"██":"▀","█ ":"▀"," █":" ","  ":" "},h="";for(r=0;r<a;r+=2){for(n=Math.floor((r-u)/1),o=Math.floor((r+1-u)/1),e=0;e<a;e+=1)i="█",u<=e&&e<c&&u<=r&&r<c&&f.isDark(n,Math.floor((e-u)/1))&&(i=" "),u<=e&&e<c&&u<=r+1&&r+1<c&&f.isDark(o,Math.floor((e-u)/1))?i+=" ":i+="█",h+=t<1&&r+1>=c?l[i]:g[i];h+="\n"}return a%2&&t>0?h.substring(0,h.length-a-1)+Array(a+1).join("▀"):h.substring(0,h.length-1)}(r);t-=1,r=void 0===r?2*t:r;var e,n,o,i,a=f.getModuleCount()*t+2*r,u=r,c=a-r,g=Array(t+1).join("██"),l=Array(t+1).join("  "),h="",s="";for(e=0;e<a;e+=1){for(o=Math.floor((e-u)/t),s="",n=0;n<a;n+=1)i=1,u<=n&&n<c&&u<=e&&e<c&&f.isDark(o,Math.floor((n-u)/t))&&(i=0),s+=i?g:l;for(o=0;o<t;o+=1)h+=s+"\n"}return h.substring(0,h.length-1)},f.renderTo2dContext=function(t,r){r=r||2;for(var e=f.getModuleCount(),n=0;n<e;n++)for(var o=0;o<e;o++)t.fillStyle=f.isDark(n,o)?"black":"white",t.fillRect(o*r,n*r,r,r)},f};t.stringToBytes=(t.stringToBytesFuncs={default:function(t){for(var r=[],e=0;e<t.length;e+=1){var n=t.charCodeAt(e);r.push(255&n)}return r}}).default,t.createStringToBytes=function(t,r){var e=function(){for(var e=S(t),n=function(){var t=e.read();if(-1==t)throw"eof";return t},o=0,i={};;){var a=e.read();if(-1==a)break;var u=n(),f=n()<<8|n();i[String.fromCharCode(a<<8|u)]=f,o+=1}if(o!=r)throw o+" != "+r;return i}(),n="?".charCodeAt(0);return function(t){for(var r=[],o=0;o<t.length;o+=1){var i=t.charCodeAt(o);if(i<128)r.push(i);else{var a=e[t.charAt(o)];"number"==typeof a?(255&a)==a?r.push(a):(r.push(a>>>8),r.push(255&a)):r.push(n)}}return r}};var r,e,n,o,i,a=1,u=2,f=4,c=8,g={L:1,M:0,Q:3,H:2},l=0,h=1,s=2,v=3,d=4,w=5,p=6,y=7,B=(r=[[],[6,18],[6,22],[6,26],[6,30],[6,34],[6,22,38],[6,24,42],[6,26,46],[6,28,50],[6,30,54],[6,32,58],[6,34,62],[6,26,46,66],[6,26,48,70],[6,26,50,74],[6,30,54,78],[6,30,56,82],[6,30,58,86],[6,34,62,90],[6,28,50,72,94],[6,26,50,74,98],[6,30,54,78,102],[6,28,54,80,106],[6,32,58,84,110],[6,30,58,86,114],[6,34,62,90,118],[6,26,50,74,98,122],[6,30,54,78,102,126],[6,26,52,78,104,130],[6,30,56,82,108,134],[6,34,60,86,112,138],[6,30,58,86,114,142],[6,34,62,90,118,146],[6,30,54,78,102,126,150],[6,24,50,76,102,128,154],[6,28,54,80,106,132,158],[6,32,58,84,110,136,162],[6,26,54,82,110,138,166],[6,30,58,86,114,142,170]],e=1335,n=7973,i=function(t){for(var r=0;0!=t;)r+=1,t>>>=1;return r},(o={}).getBCHTypeInfo=function(t){for(var r=t<<10;i(r)-i(e)>=0;)r^=e<<i(r)-i(e);return 21522^(t<<10|r)},o.getBCHTypeNumber=function(t){for(var r=t<<12;i(r)-i(n)>=0;)r^=n<<i(r)-i(n);return t<<12|r},o.getPatternPosition=function(t){return r[t-1]},o.getMaskFunction=function(t){switch(t){case l:return function(t,r){return(t+r)%2==0};case h:return function(t,r){return t%2==0};case s:return function(t,r){return r%3==0};case v:return function(t,r){return(t+r)%3==0};case d:return function(t,r){return(Math.floor(t/2)+Math.floor(r/3))%2==0};case w:return function(t,r){return t*r%2+t*r%3==0};case p:return function(t,r){return(t*r%2+t*r%3)%2==0};case y:return function(t,r){return(t*r%3+(t+r)%2)%2==0};default:throw"bad maskPattern:"+t}},o.getErrorCorrectPolynomial=function(t){for(var r=k([1],0),e=0;e<t;e+=1)r=r.multiply(k([1,C.gexp(e)],0));return r},o.getLengthInBits=function(t,r){if(1<=r&&r<10)switch(t){case a:return 10;case u:return 9;case f:case c:return 8;default:throw"mode:"+t}else if(r<27)switch(t){case a:return 12;case u:return 11;case f:return 16;case c:return 10;default:throw"mode:"+t}else{if(!(r<41))throw"type:"+r;switch(t){case a:return 14;case u:return 13;case f:return 16;case c:return 12;default:throw"mode:"+t}}},o.getLostPoint=function(t){for(var r=t.getModuleCount(),e=0,n=0;n<r;n+=1)for(var o=0;o<r;o+=1){for(var i=0,a=t.isDark(n,o),u=-1;u<=1;u+=1)if(!(n+u<0||r<=n+u))for(var f=-1;f<=1;f+=1)o+f<0||r<=o+f||0==u&&0==f||a==t.isDark(n+u,o+f)&&(i+=1);i>5&&(e+=3+i-5)}for(n=0;n<r-1;n+=1)for(o=0;o<r-1;o+=1){var c=0;t.isDark(n,o)&&(c+=1),t.isDark(n+1,o)&&(c+=1),t.isDark(n,o+1)&&(c+=1),t.isDark(n+1,o+1)&&(c+=1),0!=c&&4!=c||(e+=3)}for(n=0;n<r;n+=1)for(o=0;o<r-6;o+=1)t.isDark(n,o)&&!t.isDark(n,o+1)&&t.isDark(n,o+2)&&t.isDark(n,o+3)&&t.isDark(n,o+4)&&!t.isDark(n,o+5)&&t.isDark(n,o+6)&&(e+=40);for(o=0;o<r;o+=1)for(n=0;n<r-6;n+=1)t.isDark(n,o)&&!t.isDark(n+1,o)&&t.isDark(n+2,o)&&t.isDark(n+3,o)&&t.isDark(n+4,o)&&!t.isDark(n+5,o)&&t.isDark(n+6,o)&&(e+=40);var g=0;for(o=0;o<r;o+=1)for(n=0;n<r;n+=1)t.isDark(n,o)&&(g+=1);return e+=Math.abs(100*g/r/r-50)/5*10},o),C=function(){for(var t=new Array(256),r=new Array(256),e=0;e<8;e+=1)t[e]=1<<e;for(e=8;e<256;e+=1)t[e]=t[e-4]^t[e-5]^t[e-6]^t[e-8];for(e=0;e<255;e+=1)r[t[e]]=e;var n={glog:function(t){if(t<1)throw"glog("+t+")";return r[t]},gexp:function(r){for(;r<0;)r+=255;for(;r>=256;)r-=255;return t[r]}};return n}();function k(t,r){if(void 0===t.length)throw t.length+"/"+r;var e=function(){for(var e=0;e<t.length&&0==t[e];)e+=1;for(var n=new Array(t.length-e+r),o=0;o<t.length-e;o+=1)n[o]=t[o+e];return n}(),n={getAt:function(t){return e[t]},getLength:function(){return e.length},multiply:function(t){for(var r=new Array(n.getLength()+t.getLength()-1),e=0;e<n.getLength();e+=1)for(var o=0;o<t.getLength();o+=1)r[e+o]^=C.gexp(C.glog(n.getAt(e))+C.glog(t.getAt(o)));return k(r,0)},mod:function(t){if(n.getLength()-t.getLength()<0)return n;for(var r=C.glog(n.getAt(0))-C.glog(t.getAt(0)),e=new Array(n.getLength()),o=0;o<n.getLength();o+=1)e[o]=n.getAt(o);for(o=0;o<t.getLength();o+=1)e[o]^=C.gexp(C.glog(t.getAt(o))+r);return k(e,0).mod(t)}};return n}var A=function(){var t=[[1,26,19],[1,26,16],[1,26,13],[1,26,9],[1,44,34],[1,44,28],[1,44,22],[1,44,16],[1,70,55],[1,70,44],[2,35,17],[2,35,13],[1,100,80],[2,50,32],[2,50,24],[4,25,9],[1,134,108],[2,67,43],[2,33,15,2,34,16],[2,33,11,2,34,12],[2,86,68],[4,43,27],[4,43,19],[4,43,15],[2,98,78],[4,49,31],[2,32,14,4,33,15],[4,39,13,1,40,14],[2,121,97],[2,60,38,2,61,39],[4,40,18,2,41,19],[4,40,14,2,41,15],[2,146,116],[3,58,36,2,59,37],[4,36,16,4,37,17],[4,36,12,4,37,13],[2,86,68,2,87,69],[4,69,43,1,70,44],[6,43,19,2,44,20],[6,43,15,2,44,16],[4,101,81],[1,80,50,4,81,51],[4,50,22,4,51,23],[3,36,12,8,37,13],[2,116,92,2,117,93],[6,58,36,2,59,37],[4,46,20,6,47,21],[7,42,14,4,43,15],[4,133,107],[8,59,37,1,60,38],[8,44,20,4,45,21],[12,33,11,4,34,12],[3,145,115,1,146,116],[4,64,40,5,65,41],[11,36,16,5,37,17],[11,36,12,5,37,13],[5,109,87,1,110,88],[5,65,41,5,66,42],[5,54,24,7,55,25],[11,36,12,7,37,13],[5,122,98,1,123,99],[7,73,45,3,74,46],[15,43,19,2,44,20],[3,45,15,13,46,16],[1,135,107,5,136,108],[10,74,46,1,75,47],[1,50,22,15,51,23],[2,42,14,17,43,15],[5,150,120,1,151,121],[9,69,43,4,70,44],[17,50,22,1,51,23],[2,42,14,19,43,15],[3,141,113,4,142,114],[3,70,44,11,71,45],[17,47,21,4,48,22],[9,39,13,16,40,14],[3,135,107,5,136,108],[3,67,41,13,68,42],[15,54,24,5,55,25],[15,43,15,10,44,16],[4,144,116,4,145,117],[17,68,42],[17,50,22,6,51,23],[19,46,16,6,47,17],[2,139,111,7,140,112],[17,74,46],[7,54,24,16,55,25],[34,37,13],[4,151,121,5,152,122],[4,75,47,14,76,48],[11,54,24,14,55,25],[16,45,15,14,46,16],[6,147,117,4,148,118],[6,73,45,14,74,46],[11,54,24,16,55,25],[30,46,16,2,47,17],[8,132,106,4,133,107],[8,75,47,13,76,48],[7,54,24,22,55,25],[22,45,15,13,46,16],[10,142,114,2,143,115],[19,74,46,4,75,47],[28,50,22,6,51,23],[33,46,16,4,47,17],[8,152,122,4,153,123],[22,73,45,3,74,46],[8,53,23,26,54,24],[12,45,15,28,46,16],[3,147,117,10,148,118],[3,73,45,23,74,46],[4,54,24,31,55,25],[11,45,15,31,46,16],[7,146,116,7,147,117],[21,73,45,7,74,46],[1,53,23,37,54,24],[19,45,15,26,46,16],[5,145,115,10,146,116],[19,75,47,10,76,48],[15,54,24,25,55,25],[23,45,15,25,46,16],[13,145,115,3,146,116],[2,74,46,29,75,47],[42,54,24,1,55,25],[23,45,15,28,46,16],[17,145,115],[10,74,46,23,75,47],[10,54,24,35,55,25],[19,45,15,35,46,16],[17,145,115,1,146,116],[14,74,46,21,75,47],[29,54,24,19,55,25],[11,45,15,46,46,16],[13,145,115,6,146,116],[14,74,46,23,75,47],[44,54,24,7,55,25],[59,46,16,1,47,17],[12,151,121,7,152,122],[12,75,47,26,76,48],[39,54,24,14,55,25],[22,45,15,41,46,16],[6,151,121,14,152,122],[6,75,47,34,76,48],[46,54,24,10,55,25],[2,45,15,64,46,16],[17,152,122,4,153,123],[29,74,46,14,75,47],[49,54,24,10,55,25],[24,45,15,46,46,16],[4,152,122,18,153,123],[13,74,46,32,75,47],[48,54,24,14,55,25],[42,45,15,32,46,16],[20,147,117,4,148,118],[40,75,47,7,76,48],[43,54,24,22,55,25],[10,45,15,67,46,16],[19,148,118,6,149,119],[18,75,47,31,76,48],[34,54,24,34,55,25],[20,45,15,61,46,16]],r=function(t,r){var e={};return e.totalCount=t,e.dataCount=r,e},e={};return e.getRSBlocks=function(e,n){var o=function(r,e){switch(e){case g.L:return t[4*(r-1)+0];case g.M:return t[4*(r-1)+1];case g.Q:return t[4*(r-1)+2];case g.H:return t[4*(r-1)+3];default:return}}(e,n);if(void 0===o)throw"bad rs block @ typeNumber:"+e+"/errorCorrectionLevel:"+n;for(var i=o.length/3,a=[],u=0;u<i;u+=1)for(var f=o[3*u+0],c=o[3*u+1],l=o[3*u+2],h=0;h<f;h+=1)a.push(r(c,l));return a},e}(),b=function(){var t=[],r=0,e={getBuffer:function(){return t},getAt:function(r){var e=Math.floor(r/8);return 1==(t[e]>>>7-r%8&1)},put:function(t,r){for(var n=0;n<r;n+=1)e.putBit(1==(t>>>r-n-1&1))},getLengthInBits:function(){return r},putBit:function(e){var n=Math.floor(r/8);t.length<=n&&t.push(0),e&&(t[n]|=128>>>r%8),r+=1}};return e},M=function(t){var r=a,e=t,n={getMode:function(){return r},getLength:function(t){return e.length},write:function(t){for(var r=e,n=0;n+2<r.length;)t.put(o(r.substring(n,n+3)),10),n+=3;n<r.length&&(r.length-n==1?t.put(o(r.substring(n,n+1)),4):r.length-n==2&&t.put(o(r.substring(n,n+2)),7))}},o=function(t){for(var r=0,e=0;e<t.length;e+=1)r=10*r+i(t.charAt(e));return r},i=function(t){if("0"<=t&&t<="9")return t.charCodeAt(0)-"0".charCodeAt(0);throw"illegal char :"+t};return n},x=function(t){var r=u,e=t,n={getMode:function(){return r},getLength:function(t){return e.length},write:function(t){for(var r=e,n=0;n+1<r.length;)t.put(45*o(r.charAt(n))+o(r.charAt(n+1)),11),n+=2;n<r.length&&t.put(o(r.charAt(n)),6)}},o=function(t){if("0"<=t&&t<="9")return t.charCodeAt(0)-"0".charCodeAt(0);if("A"<=t&&t<="Z")return t.charCodeAt(0)-"A".charCodeAt(0)+10;switch(t){case" ":return 36;case"$":return 37;case"%":return 38;case"*":return 39;case"+":return 40;case"-":return 41;case".":return 42;case"/":return 43;case":":return 44;default:throw"illegal char :"+t}};return n},m=function(r){var e=f,n=t.stringToBytes(r),o={getMode:function(){return e},getLength:function(t){return n.length},write:function(t){for(var r=0;r<n.length;r+=1)t.put(n[r],8)}};return o},L=function(r){var e=c,n=t.stringToBytesFuncs.SJIS;if(!n)throw"sjis not supported.";!function(){var t=n("友");if(2!=t.length||38726!=(t[0]<<8|t[1]))throw"sjis not supported."}();var o=n(r),i={getMode:function(){return e},getLength:function(t){return~~(o.length/2)},write:function(t){for(var r=o,e=0;e+1<r.length;){var n=(255&r[e])<<8|255&r[e+1];if(33088<=n&&n<=40956)n-=33088;else{if(!(57408<=n&&n<=60351))throw"illegal char at "+(e+1)+"/"+n;n-=49472}n=192*(n>>>8&255)+(255&n),t.put(n,13),e+=2}if(e<r.length)throw"illegal char at "+(e+1)}};return i},D=function(){var t=[],r={writeByte:function(r){t.push(255&r)},writeShort:function(t){r.writeByte(t),r.writeByte(t>>>8)},writeBytes:function(t,e,n){e=e||0,n=n||t.length;for(var o=0;o<n;o+=1)r.writeByte(t[o+e])},writeString:function(t){for(var e=0;e<t.length;e+=1)r.writeByte(t.charCodeAt(e))},toByteArray:function(){return t},toString:function(){var r="";r+="[";for(var e=0;e<t.length;e+=1)e>0&&(r+=","),r+=t[e];return r+="]"}};return r},S=function(t){var r=t,e=0,n=0,o=0,i={read:function(){for(;o<8;){if(e>=r.length){if(0==o)return-1;throw"unexpected end of file./"+o}var t=r.charAt(e);if(e+=1,"="==t)return o=0,-1;t.match(/^\s$/)||(n=n<<6|a(t.charCodeAt(0)),o+=6)}var i=n>>>o-8&255;return o-=8,i}},a=function(t){if(65<=t&&t<=90)return t-65;if(97<=t&&t<=122)return t-97+26;if(48<=t&&t<=57)return t-48+52;if(43==t)return 62;if(47==t)return 63;throw"c:"+t};return i},I=function(t,r,e){for(var n=function(t,r){var e=t,n=r,o=new Array(t*r),i={setPixel:function(t,r,n){o[r*e+t]=n},write:function(t){t.writeString("GIF87a"),t.writeShort(e),t.writeShort(n),t.writeByte(128),t.writeByte(0),t.writeByte(0),t.writeByte(0),t.writeByte(0),t.writeByte(0),t.writeByte(255),t.writeByte(255),t.writeByte(255),t.writeString(","),t.writeShort(0),t.writeShort(0),t.writeShort(e),t.writeShort(n),t.writeByte(0);var r=a(2);t.writeByte(2);for(var o=0;r.length-o>255;)t.writeByte(255),t.writeBytes(r,o,255),o+=255;t.writeByte(r.length-o),t.writeBytes(r,o,r.length-o),t.writeByte(0),t.writeString(";")}},a=function(t){for(var r=1<<t,e=1+(1<<t),n=t+1,i=u(),a=0;a<r;a+=1)i.add(String.fromCharCode(a));i.add(String.fromCharCode(r)),i.add(String.fromCharCode(e));var f,c,g,l=D(),h=(f=l,c=0,g=0,{write:function(t,r){if(t>>>r!=0)throw"length over";for(;c+r>=8;)f.writeByte(255&(t<<c|g)),r-=8-c,t>>>=8-c,g=0,c=0;g|=t<<c,c+=r},flush:function(){c>0&&f.writeByte(g)}});h.write(r,n);var s=0,v=String.fromCharCode(o[s]);for(s+=1;s<o.length;){var d=String.fromCharCode(o[s]);s+=1,i.contains(v+d)?v+=d:(h.write(i.indexOf(v),n),i.size()<4095&&(i.size()==1<<n&&(n+=1),i.add(v+d)),v=d)}return h.write(i.indexOf(v),n),h.write(e,n),h.flush(),l.toByteArray()},u=function(){var t={},r=0,e={add:function(n){if(e.contains(n))throw"dup key:"+n;t[n]=r,r+=1},size:function(){return r},indexOf:function(r){return t[r]},contains:function(r){return void 0!==t[r]}};return e};return i}(t,r),o=0;o<r;o+=1)for(var i=0;i<t;i+=1)n.setPixel(i,o,e(i,o));var a=D();n.write(a);for(var u=function(){var t=0,r=0,e=0,n="",o={},i=function(t){n+=String.fromCharCode(a(63&t))},a=function(t){if(t<0);else{if(t<26)return 65+t;if(t<52)return t-26+97;if(t<62)return t-52+48;if(62==t)return 43;if(63==t)return 47}throw"n:"+t};return o.writeByte=function(n){for(t=t<<8|255&n,r+=8,e+=1;r>=6;)i(t>>>r-6),r-=6},o.flush=function(){if(r>0&&(i(t<<6-r),t=0,r=0),e%3!=0)for(var o=3-e%3,a=0;a<o;a+=1)n+="="},o.toString=function(){return n},o}(),f=a.toByteArray(),c=0;c<f.length;c+=1)u.writeByte(f[c]);return u.flush(),"data:image/gif;base64,"+u};return t}();qrcode.stringToBytesFuncs["UTF-8"]=function(t){return function(t){for(var r=[],e=0;e<t.length;e++){var n=t.charCodeAt(e);n<128?r.push(n):n<2048?r.push(192|n>>6,128|63&n):n<55296||n>=57344?r.push(224|n>>12,128|n>>6&63,128|63&n):(e++,n=65536+((1023&n)<<10|1023&t.charCodeAt(e)),r.push(240|n>>18,128|n>>12&63,128|n>>6&63,128|63&n))}return r}(t)},function(t){"function"==typeof define&&define.amd?define([],t):"object"==typeof exports&&(module.exports=t())}(function(){return qrcode});
+</script>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
@@ -327,11 +420,16 @@ if (useFirebase) {
     },
     push: (p, v) => Promise.race([root.ref(p).push(v).then(() => true).catch(() => 'error'), new Promise(res => setTimeout(() => res('error'), 12000))]),
     watchQ: (p, q, cb) => {
-      let r = root.ref(p); r = q.child ? r.orderByChild(q.child) : r.orderByKey();
+      let r = root.ref(p); r = q.byValue ? r.orderByValue() : q.child ? r.orderByChild(q.child) : r.orderByKey();
       if ('eq' in q) r = r.equalTo(q.eq);
       if (q.last) r = r.limitToLast(q.last);
       r.on('value', s => cb(s.val()));
-    }
+    },
+    presence: (id, getState) => {
+      const r = root.ref('presence/' + id); DB._pr = r;
+      root.ref('.info/connected').on('value', s => { if (s.val() === true) { r.onDisconnect().remove(); r.set(getState()).catch(() => {}); } });
+    },
+    presenceSet: st => { if (DB._pr) DB._pr.set(st).catch(() => {}); }
   };
   let wasConnected = false, wasLost = false;
   root.ref('.info/connected').on('value', s => {
@@ -354,6 +452,7 @@ if (useFirebase) {
     watchQ: (p, q, cb) => {
       const f = o => {
         o = o || {}; let ks = Object.keys(o).sort();
+        if (q.byValue) ks.sort((a, b) => o[a] - o[b]);
         if ('eq' in q) ks = ks.filter(k => o[k] && o[k][q.child] === q.eq);
         if (q.last) ks = ks.slice(-q.last);
         const r = {}; ks.forEach(k => { r[k] = o[k]; }); cb(ks.length ? r : null);
@@ -425,6 +524,7 @@ function flush() {
     const n = pending[d.id] || 0; if (!n) return;
     pending[d.id] = 0; jset('pending', pending);
     DB.tx('counters/' + d.id, v => (v || 0) + n).then(r => {
+      if (r === true) statAdd('days/' + dayKey() + '/adhkar', n);
       if (r === 'error') {
         pending[d.id] = (pending[d.id] || 0) + n; jset('pending', pending); paintCounts();
         if (Date.now() - lastFlushErr > 30000) { lastFlushErr = Date.now(); toast('اتعذّر حفظ عدّاتك دلوقتي. هنحاول تاني تلقائي.', 'err'); }
@@ -470,6 +570,7 @@ function paintKhatma() {
   }
   $('khList').innerHTML = rows;
   paintActions();
+  if (window.onStats) window.onStats();
 }
 const CONN_ERR = 'الاتصال ضعيف أو مقطوع. اتأكد من الإنترنت وحاول تاني.';
 let busy = false;
@@ -535,7 +636,7 @@ async function markDone(n) {
   if (r === true) {
     const m = stats().m;
     if (m === before) toast(`تقبّل الله منك. اتحسبت قراءتك للجزء ${fmt(n)}.`, 'ok');
-    logActivity('juz', n); if (m > before) logActivity('khatma', m);
+    logActivity('juz', n); statAdd('days/' + dayKey() + '/juz', 1); if (m > before) logActivity('khatma', m);
     setTimeout(() => openShare(`قرأتُ الجزء ${fmt(n)} من القرآن الكريم`, 'وجعلتُ ثوابه صدقةً جارية له'), 700);
   }
   else toast(CONN_ERR, 'err');
@@ -559,9 +660,10 @@ DB.watch('khatma2', v => {
 });
 setInterval(paintKhatma, 60000);
 
+
 /* ---------- تحديث تلقائي للنسخة ----------
    غيّر رقم النسخة ده مع كل رفع جديد، وأي حد فاتح الصفحة هتتحدّث له لوحدها. */
-const APP_VERSION = '2026-10-28-5';
+const APP_VERSION = '2026-10-30-2';
 if (location.search.indexOf('_u=') > -1 && history.replaceState) history.replaceState(null, '', location.pathname + location.hash);
 (function autoUpdate() {
   if (!/^https?:$/.test(location.protocol)) return;
@@ -885,6 +987,7 @@ window.onSum = (sum, ready) => {
     if (baseSum !== null) { const hit = MILESTONES.find(m => baseSum < m && sum >= m); if (hit) toast(`الحمد لله، وصلنا ${fmt(hit)} ذكر اتهدى لعبدالله! جزاكم الله خيرًا.`, 'ok'); }
     baseSum = sum;
   }
+  if (window.onStats) window.onStats();
 };
 paintCounts();
 
@@ -933,7 +1036,7 @@ async function makeCard(line1, line2) {
 }
 let cardBlob = null, cardUrl = null, shareLine = '';
 async function openShare(line1, line2) {
-  shareLine = line1 + ' ' + line2; cardBlob = null;
+  shareLine = line1 + ' ' + line2; cardBlob = null; $('mPrint').classList.add('hidden'); $('mStyle').classList.add('hidden');
   $('modal').classList.remove('hidden'); $('mImg').removeAttribute('src'); $('mMsg').textContent = 'جاري تجهيز البطاقة…';
   try {
     cardBlob = await makeCard(line1, line2);
@@ -970,6 +1073,392 @@ $('installBtn').onclick = async () => {
 };
 if (/iphone|ipad|ipod/i.test(navigator.userAgent) && !navigator.standalone && !matchMedia('(display-mode: standalone)').matches) $('installBtn').classList.remove('hidden');
 if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(() => {}); });
+
+/* ======================= دفعة التحديثات الثانية ======================= */
+function dayKey() { return new Date().toLocaleDateString('en-CA', { timeZone: 'Africa/Cairo' }); }
+function statAdd(path, n) { try { DB.tx('stats/' + path, v => (v || 0) + n); } catch (e) {} }
+
+/* ---- 3) وضع القراءة المريح ---- */
+const RT = Object.assign({ size: 28, theme: 'default', wake: false }, jget('readPrefs', {}));
+const RTHEMES = [['default', 'افتراضي'], ['warm', 'دافئ'], ['black', 'ليلي']];
+let wakeLock = null;
+function paintTools() {
+  const b = $('readerBody'); b.style.fontSize = RT.size + 'px'; b.dataset.rt = RT.theme;
+  $('rtSize').textContent = fmt(RT.size);
+  $('rtTheme').textContent = 'الوضع: ' + (RTHEMES.find(t => t[0] === RT.theme) || RTHEMES[0])[1];
+  $('rtWake').textContent = 'منع انطفاء الشاشة: ' + (RT.wake ? 'شغّال' : 'مقفول');
+  jset('readPrefs', RT);
+}
+async function setWake(on) {
+  try {
+    if (on) { wakeLock = await navigator.wakeLock.request('screen'); wakeLock.addEventListener('release', () => { wakeLock = null; }); }
+    else if (wakeLock) { await wakeLock.release(); wakeLock = null; }
+  } catch (e) { RT.wake = false; toast('الجهاز مش داعم منع انطفاء الشاشة دلوقتي.', 'info'); }
+  paintTools();
+}
+$('fMinus').onclick = () => { RT.size = Math.max(20, RT.size - 2); paintTools(); };
+$('fPlus').onclick = () => { RT.size = Math.min(46, RT.size + 2); paintTools(); };
+$('rtTheme').onclick = () => { const i = RTHEMES.findIndex(t => t[0] === RT.theme); RT.theme = RTHEMES[(i + 1) % RTHEMES.length][0]; paintTools(); };
+if ('wakeLock' in navigator) { $('rtWake').classList.remove('hidden'); $('rtWake').onclick = () => { RT.wake = !RT.wake; setWake(RT.wake); }; }
+document.addEventListener('visibilitychange', () => { if (!document.hidden && RT.wake && !wakeLock && 'wakeLock' in navigator) setWake(true); });
+paintTools(); if (RT.wake && 'wakeLock' in navigator) setWake(true);
+
+/* ---- 4) لمسات موسمية ---- */
+function hij(d) {
+  try {
+    const p = new Intl.DateTimeFormat('en-u-ca-islamic-umalqura', { day: 'numeric', month: 'numeric', year: 'numeric', timeZone: 'Africa/Cairo' }).formatToParts(d);
+    const g = t => +p.find(x => x.type === t).value; return { d: g('day'), m: g('month'), y: g('year') };
+  } catch (e) { return null; }
+}
+function seasonFor(date) {
+  const out = [], h = hij(date);
+  const dk = date.toLocaleDateString('en-CA', { timeZone: 'Africa/Cairo' });
+  const since = Math.round((Date.parse(dk + 'T00:00:00Z') - Date.UTC(PASSED.getFullYear(), PASSED.getMonth(), PASSED.getDate())) / 864e5);
+  const fri = new Intl.DateTimeFormat('en-US', { weekday: 'short', timeZone: 'Africa/Cairo' }).format(date) === 'Fri';
+  if (since === 40) out.push({ t: 'اليوم الأربعون على رحيل عبدالله', s: 'رحمه الله. أكثروا له من الدعاء والصدقة وقراءة القرآن.', cls: 'gold' });
+  if (h) {
+    const { d, m } = h;
+    if (m === 9 && d >= 21) out.push({ t: 'العشر الأواخر من رمضان', s: 'اجتهد في الدعاء وتحرَّ ليلة القدر، وقل: «اللهم إنك عفو تحب العفو فاعفُ عنا»، وادعُ لعبدالله.', btn: ['اقرأ سورة القدر', () => { openAt(97, 1); $('quran').scrollIntoView(); }] });
+    else if (m === 9) out.push({ t: `رمضان كريم — اليوم ${fmt(d)} من رمضان`, s: 'الأجر مضاعف: شارك في الختمة الجماعية واجعل ثوابها لعبدالله.', btn: ['الختمة الجماعية', () => { location.hash = '#khatma'; }] });
+    else if (m === 10 && d <= 3) out.push({ t: 'عيد فطر مبارك', s: 'تقبّل الله منا ومنكم، ولا تنسوا عبدالله من دعائكم في هذا اليوم.' });
+    else if (m === 12 && d === 9) out.push({ t: 'يوم عرفة', s: 'خير الدعاء دعاء يوم عرفة. ادعُ لعبدالله ولنفسك ولمن تحب.' });
+    else if (m === 12 && d >= 10 && d <= 13) out.push({ t: 'عيد أضحى مبارك', s: 'تقبّل الله منا ومنكم، ولا تنسوا عبدالله من الدعاء.' });
+    else if (m === 12 && d < 9) out.push({ t: `من العشر من ذي الحجة — اليوم ${fmt(d)}`, s: 'أفضل أيام الدنيا، أكثر فيها من التكبير والذكر والصدقة.' });
+  }
+  if (fri) out.push({ t: 'جمعة مباركة', s: 'لا تنس سورة الكهف والصلاة على النبي ﷺ وساعة الإجابة، وادعُ لعبدالله.', btn: ['اقرأ سورة الكهف', () => { openAt(18, 1); $('quran').scrollIntoView(); }] });
+  if (h && h.m !== 9) {
+    for (let i = 1; i <= 120; i++) {
+      const x = hij(new Date(date.getTime() + i * 864e5));
+      if (x && x.m === 9 && x.d === 1) { if (i <= 60) out.push({ t: `باقي ${fmt(i)} يوم على رمضان`, s: 'جهّز نفسك: ختمة جماعية بنية عبدالله وأذكار كل يوم.' }); break; }
+    }
+  }
+  return out;
+}
+function paintSeason() {
+  const ms = seasonFor(new Date()).slice(0, 2), box = $('season');
+  box.innerHTML = ms.map((m, i) => `<div class="se ${m.cls || ''}"><b>${esc(m.t)}</b><span>${esc(m.s)}</span>${m.btn ? `<button class="btn alt" data-i="${i}">${esc(m.btn[0])}</button>` : ''}</div>`).join('');
+  box.classList.toggle('hidden', !ms.length);
+  box.querySelectorAll('button[data-i]').forEach(b => { b.onclick = ms[+b.dataset.i].btn[1]; });
+}
+paintSeason(); setInterval(paintSeason, 3600e3);
+
+/* ---- 1) مواقيت الصلاة ---- */
+const CITIES = [
+  ['القاهرة', 30.0444, 31.2357, 5, 'مصر'], ['الجيزة', 30.0131, 31.2089, 5, 'مصر'], ['6 أكتوبر', 29.9285, 30.9188, 5, 'مصر'],
+  ['الإسكندرية', 31.2001, 29.9187, 5, 'مصر'], ['دمنهور', 31.0341, 30.4682, 5, 'مصر'], ['طنطا', 30.7865, 31.0004, 5, 'مصر'],
+  ['المحلة الكبرى', 30.9697, 31.1669, 5, 'مصر'], ['المنصورة', 31.0409, 31.3785, 5, 'مصر'], ['الزقازيق', 30.5877, 31.5021, 5, 'مصر'],
+  ['بنها', 30.4660, 31.1848, 5, 'مصر'], ['شبين الكوم', 30.5972, 31.0050, 5, 'مصر'], ['كفر الشيخ', 31.1107, 30.9388, 5, 'مصر'],
+  ['دمياط', 31.4165, 31.8133, 5, 'مصر'], ['بورسعيد', 31.2653, 32.3019, 5, 'مصر'], ['الإسماعيلية', 30.5965, 32.2715, 5, 'مصر'],
+  ['السويس', 29.9668, 32.5498, 5, 'مصر'], ['الفيوم', 29.3084, 30.8428, 5, 'مصر'], ['بني سويف', 29.0661, 31.0994, 5, 'مصر'],
+  ['المنيا', 28.1099, 30.7503, 5, 'مصر'], ['أسيوط', 27.1809, 31.1837, 5, 'مصر'], ['سوهاج', 26.5591, 31.6957, 5, 'مصر'],
+  ['قنا', 26.1551, 32.7160, 5, 'مصر'], ['الأقصر', 25.6872, 32.6396, 5, 'مصر'], ['أسوان', 24.0889, 32.8998, 5, 'مصر'],
+  ['الغردقة', 27.2579, 33.8116, 5, 'مصر'], ['شرم الشيخ', 27.9158, 34.3300, 5, 'مصر'], ['مرسى مطروح', 31.3543, 27.2373, 5, 'مصر'],
+  ['العريش', 31.1316, 33.7984, 5, 'مصر'],
+  ['مكة المكرمة', 21.3891, 39.8579, 4, 'السعودية'], ['المدينة المنورة', 24.5247, 39.5692, 4, 'السعودية'], ['الرياض', 24.7136, 46.6753, 4, 'السعودية'],
+  ['جدة', 21.4858, 39.1925, 4, 'السعودية'], ['الدمام', 26.4207, 50.0888, 4, 'السعودية'],
+  ['دبي', 25.2048, 55.2708, 16, 'الإمارات'], ['أبو ظبي', 24.4539, 54.3773, 16, 'الإمارات'], ['الكويت', 29.3759, 47.9774, 9, 'الكويت'],
+  ['الدوحة', 25.2854, 51.5310, 10, 'قطر'], ['المنامة', 26.2285, 50.5860, 8, 'البحرين'], ['مسقط', 23.5880, 58.3829, 8, 'عُمان'],
+  ['عمّان', 31.9454, 35.9284, 23, 'الأردن'], ['بيروت', 33.8938, 35.5018, 3, 'لبنان'], ['بغداد', 33.3152, 44.3661, 3, 'العراق'],
+  ['الخرطوم', 15.5007, 32.5599, 3, 'السودان'], ['طرابلس', 32.8872, 13.1913, 3, 'ليبيا'], ['تونس', 36.8065, 10.1815, 18, 'تونس'],
+  ['الجزائر', 36.7538, 3.0588, 19, 'الجزائر'], ['الرباط', 34.0209, -6.8416, 21, 'المغرب'], ['الدار البيضاء', 33.5731, -7.5898, 21, 'المغرب'],
+  ['إسطنبول', 41.0082, 28.9784, 13, 'تركيا'], ['لندن', 51.5074, -0.1278, 3, 'بريطانيا']
+];
+const PN = [['Fajr', 'الفجر'], ['Dhuhr', 'الظهر'], ['Asr', 'العصر'], ['Maghrib', 'المغرب'], ['Isha', 'العشاء']];
+let pCity = jget('pCity', null) || { name: 'القاهرة', lat: 30.0444, lng: 31.2357, m: 5 }, pData = null;
+const toSec = t => { const m = String(t).match(/(\d{1,2}):(\d{2})/); return m ? +m[1] * 3600 + +m[2] * 60 : null; };
+const t12 = sec => { let h = Math.floor(sec / 3600) % 24; const m = Math.floor(sec % 3600 / 60), ap = h >= 12 ? 'م' : 'ص'; h = h % 12 || 12; return fmt(h) + ':' + two(m) + ' ' + ap; };
+const hm = s => { const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60); return h ? `${fmt(h)} ساعة و${fmt(m)} دقيقة` : `${fmt(m)} دقيقة`; };
+function nowIn(tz) {
+  try {
+    const p = new Intl.DateTimeFormat('en-GB', { timeZone: tz, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }).formatToParts(new Date());
+    const g = t => +p.find(x => x.type === t).value; return g('hour') % 24 * 3600 + g('minute') * 60 + g('second');
+  } catch (e) { const d = new Date(); return d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds(); }
+}
+const ddCity = makeDD($('cityDD'), {
+  placeholder: 'اختر المدينة', prefix: 'المدينة: ', search: true,
+  onChange: v => {
+    if (v === 'geo') {
+      if (!navigator.geolocation) { toast('المتصفح مش داعم تحديد الموقع.', 'info'); ddCity.set(pCity.name === 'موقعي الحالي' ? 'geo' : cityKey()); return; }
+      navigator.geolocation.getCurrentPosition(pos => {
+        const lat = pos.coords.latitude, lng = pos.coords.longitude, eg = lat > 22 && lat < 32.2 && lng > 24.5 && lng < 37;
+        setCity({ name: 'موقعي الحالي', lat, lng, m: eg ? 5 : 3 });
+      }, () => { toast('مقدرناش نحدد موقعك. اختار مدينتك من القايمة.', 'info'); ddCity.set(cityKey()); }, { timeout: 10000 });
+      return;
+    }
+    const c = CITIES[+v]; setCity({ name: c[0], lat: c[1], lng: c[2], m: c[3] });
+  }
+});
+ddCity.setItems([{ v: 'geo', l: 'موقعي الحالي (GPS)' }].concat(CITIES.map((c, i) => ({ v: String(i), l: c[0], s: c[4] }))));
+function cityKey() { const i = CITIES.findIndex(c => c[0] === pCity.name); return pCity.name === 'موقعي الحالي' ? 'geo' : (i >= 0 ? String(i) : ''); }
+function setCity(c) { pCity = c; jset('pCity', c); ddCity.set(cityKey()); pData = null; loadPrayer(); }
+ddCity.set(cityKey());
+function paintPrayer() {
+  if (!pData) return;
+  const now = nowIn(pData.tz), list = PN.map(([k, n]) => ({ n, s: toSec(pData.timings[k]) })).filter(x => x.s != null);
+  if (!list.length) return;
+  let next = list.find(x => x.s > now), nextS;
+  if (!next) { next = list[0]; nextS = list[0].s + 86400; } else nextS = next.s;
+  $('pNext').innerHTML = `الصلاة الجاية: <b>${next.n}</b> بعد <b>${hm(nextS - now)}</b>`;
+  $('pGrid').innerHTML = list.map(x => `<div class="pt${x === next ? ' nx' : ''}"><span>${x.n}</span><b>${t12(x.s)}</b></div>`).join('');
+  const last = [...list].reverse().find(x => x.s <= now && now - x.s <= 1800), bar = $('pbar');
+  let dismissed = ''; try { dismissed = sessionStorage.getItem('pbarX') || ''; } catch (e) {}
+  if (last && dismissed !== last.n + dayKey()) { $('pbarT').textContent = `صلّيت ${last.n}؟ ادعُ لعبدالله: «اللهم اغفر له وارحمه»`; bar.classList.remove('hidden'); bar.dataset.k = last.n + dayKey(); }
+  else bar.classList.add('hidden');
+}
+$('pbarX').onclick = () => { try { sessionStorage.setItem('pbarX', $('pbar').dataset.k || ''); } catch (e) {} $('pbar').classList.add('hidden'); };
+async function loadPrayer() {
+  const c = pCity, d = new Date(), base = [c.lat.toFixed(2), c.lng.toFixed(2), c.m].join('|');
+  const key = base + '|' + [d.getFullYear(), d.getMonth(), d.getDate()].join('-'), cache = jget('pTimes', null);
+  $('pNote').textContent = 'المواقيت لمدينة ' + c.name + '، وبتتحسب حسب طريقة منطقتك.';
+  if (cache && cache.key === key) { pData = cache; paintPrayer(); return; }
+  $('pNext').textContent = 'جاري تحميل المواقيت…';
+  try {
+    const dd = `${String(d.getDate()).padStart(2, '0')}-${String(d.getMonth() + 1).padStart(2, '0')}-${d.getFullYear()}`;
+    const r = await fetch(`https://api.aladhan.com/v1/timings/${dd}?latitude=${c.lat}&longitude=${c.lng}&method=${c.m}`);
+    if (!r.ok) throw 0;
+    const j = await r.json();
+    pData = { key, timings: j.data.timings, tz: j.data.meta.timezone }; jset('pTimes', pData); paintPrayer();
+  } catch (e) {
+    if (cache && cache.key.split('|').slice(0, 3).join('|') === base) { pData = cache; paintPrayer(); $('pNote').textContent = 'دي آخر مواقيت محفوظة. اتأكد من الإنترنت.'; }
+    else $('pNext').textContent = 'تعذّر تحميل المواقيت. اتأكد من الإنترنت وحاول تاني.';
+  }
+}
+loadPrayer(); setInterval(paintPrayer, 20000);
+setInterval(() => { const d = new Date(); if (pData && !pData.key.endsWith([d.getFullYear(), d.getMonth(), d.getDate()].join('-'))) loadPrayer(); }, 600000);
+
+/* ---- 9) بطاقة QR للطباعة ---- */
+const QR_ALIGN = { 4: [6, 26], 5: [6, 30], 6: [6, 34], 7: [6, 22, 38], 8: [6, 24, 42], 9: [6, 26, 46], 10: [6, 28, 50], 11: [6, 30, 54], 12: [6, 32, 58] };
+function qrFuncMask(n) {
+  const v = (n - 17) / 4, fm = new Uint8Array(n * n), set = (r, c) => { fm[r * n + c] = 1; };
+  for (let r = 0; r < 9; r++) for (let c = 0; c < 9; c++) set(r, c);
+  for (let r = 0; r < 9; r++) for (let c = n - 8; c < n; c++) set(r, c);
+  for (let r = n - 8; r < n; r++) for (let c = 0; c < 9; c++) set(r, c);
+  for (let i = 0; i < n; i++) { set(6, i); set(i, 6); }
+  if (v >= 7) for (let i = 0; i < 6; i++) for (let j = 0; j < 3; j++) { set(i, n - 11 + j); set(n - 11 + j, i); }
+  const pos = QR_ALIGN[v] || [];
+  pos.forEach(r => pos.forEach(c => {
+    if ((r < 9 && c < 9) || (r < 9 && c > n - 9) || (r > n - 9 && c < 9)) return;
+    for (let dr = -2; dr <= 2; dr++) for (let dc = -2; dc <= 2; dc++) set(r + dr, c + dc);
+  }));
+  return fm;
+}
+function boxBlur(src, S, r) {
+  const tmp = new Float32Array(S * S), out = new Float32Array(S * S), w = 2 * r + 1, cl = i => Math.min(S - 1, Math.max(0, i));
+  for (let y = 0; y < S; y++) {
+    const o = y * S; let acc = 0;
+    for (let i = -r; i <= r; i++) acc += src[o + cl(i)];
+    for (let x = 0; x < S; x++) { tmp[o + x] = acc / w; acc += src[o + cl(x + r + 1)] - src[o + cl(x - r)]; }
+  }
+  for (let x = 0; x < S; x++) {
+    let acc = 0;
+    for (let i = -r; i <= r; i++) acc += tmp[cl(i) * S + x];
+    for (let y = 0; y < S; y++) { out[y * S + x] = acc / w; acc += tmp[cl(y + r + 1) * S + x] - tmp[cl(y - r) * S + x]; }
+  }
+  return out;
+}
+/* كود QR مرسوم منه صورة عبدالله: مركز كل مربع بيحافظ على قيمته الأصلية عشان الكاميرا تقرأه */
+function drawPortraitQr(x, X0, Y0, size, img, qr) {
+  const n = qr.getModuleCount(), N = n + 8, m = Math.max(4, Math.floor(size / N)), S = n * m, T = N * m;
+  const ph = document.createElement('canvas'); ph.width = ph.height = S;
+  const pc = ph.getContext('2d', { willReadFrequently: true }), iw = img.naturalWidth, side = iw * 0.54;
+  pc.drawImage(img, iw * 0.52 - side / 2, iw * 0.36 - side / 2, side, side, 0, 0, S, S);
+  const d = pc.getImageData(0, 0, S, S).data, L = new Float32Array(S * S), hist = new Uint32Array(256), tot = S * S;
+  for (let i = 0; i < tot; i++) { const v = 0.299 * d[4 * i] + 0.587 * d[4 * i + 1] + 0.114 * d[4 * i + 2]; L[i] = v / 255; hist[v | 0]++; }
+  let acc = 0, lo = 0, hi = 255;
+  for (let i = 0; i < 256; i++) { acc += hist[i]; if (acc >= tot * 0.02) { lo = i; break; } }
+  acc = 0; for (let i = 0; i < 256; i++) { acc += hist[i]; if (acc >= tot * 0.98) { hi = i; break; } }
+  lo /= 255; hi = Math.max(hi / 255, lo + 0.05);
+  for (let i = 0; i < tot; i++) L[i] = Math.min(1, Math.max(0, (L[i] - lo) / (hi - lo)));
+  const bl = boxBlur(L, S, Math.max(3, Math.floor(S / 14)));
+  for (let i = 0; i < tot; i++) L[i] = Math.min(1, Math.max(0, 0.5 + (L[i] - bl[i]) * 2.2 + (bl[i] - 0.5) * 0.85));
+  const A = 0.45, F = 0.43, DK = [11, 42, 34], LT = [251, 246, 233];
+  const fm = qrFuncMask(n), out = new ImageData(T, T), o = out.data, s = Math.round(m * F), off = Math.floor((m - s) / 2);
+  const put = (px, py, t) => { const i = (py * T + px) * 4; o[i] = DK[0] + (LT[0] - DK[0]) * t; o[i + 1] = DK[1] + (LT[1] - DK[1]) * t; o[i + 2] = DK[2] + (LT[2] - DK[2]) * t; o[i + 3] = 255; };
+  for (let py = 0; py < T; py++) for (let px = 0; px < T; px++) {
+    const cx = Math.floor(px / m) - 4, cy = Math.floor(py / m) - 4;
+    if (cx < 0 || cy < 0 || cx >= n || cy >= n) { put(px, py, 1); continue; }
+    const bit = qr.isDark(cy, cx) ? 0 : 1;
+    if (fm[cy * n + cx]) { put(px, py, bit); continue; }
+    const lx = px - (cx + 4) * m, ly = py - (cy + 4) * m;
+    if (lx >= off && lx < off + s && ly >= off && ly < off + s) { put(px, py, bit); continue; }
+    put(px, py, (1 - A) * L[(cy * m + ly) * S + (cx * m + lx)] + A * bit);
+  }
+  x.putImageData(out, X0 + Math.floor((size - T) / 2), Y0);
+  return T;
+}
+function drawPlainQr(x, X0, Y0, size, qr) {
+  const n = qr.getModuleCount(), cell = Math.max(2, Math.floor(size / (n + 6))), box = cell * (n + 6);
+  x.fillStyle = '#fff'; roundRect(x, X0, Y0, box, box, 20); x.fill();
+  x.strokeStyle = '#b38a2e'; x.lineWidth = 4; roundRect(x, X0, Y0, box, box, 20); x.stroke();
+  x.fillStyle = '#000';
+  for (let r = 0; r < n; r++) for (let k = 0; k < n; k++) if (qr.isDark(r, k)) x.fillRect(X0 + cell * 3 + k * cell, Y0 + cell * 3 + r * cell, cell, cell);
+  return box;
+}
+async function makeQrCard(style) {
+  try { await Promise.all(['60px "Aref Ruqaa"', '40px "Amiri"', '30px "IBM Plex Sans Arabic"'].map(f => document.fonts.load(f, 'ابجد'))); } catch (e) {}
+  const W = 1240, H = 1754, c = document.createElement('canvas'); c.width = W; c.height = H;
+  const x = c.getContext('2d'); x.direction = 'rtl'; x.textAlign = 'center'; x.textBaseline = 'middle';
+  x.fillStyle = '#fbf6e9'; x.fillRect(0, 0, W, H);
+  x.strokeStyle = '#b38a2e'; x.lineWidth = 8; roundRect(x, 36, 36, W - 72, H - 72, 40); x.stroke();
+  x.strokeStyle = 'rgba(179,138,46,.45)'; x.lineWidth = 3; roundRect(x, 62, 62, W - 124, H - 124, 30); x.stroke();
+  const img = $('photo'), portrait = style === 'portrait' && img && img.naturalWidth;
+  let y = 150;
+  if (!portrait && img && img.naturalWidth) {
+    x.save(); x.beginPath(); x.arc(W / 2, 290, 165, 0, Math.PI * 2); x.clip();
+    const q = Math.min(img.naturalWidth, img.naturalHeight);
+    x.drawImage(img, (img.naturalWidth - q) / 2, (img.naturalHeight - q) / 2, q, q, W / 2 - 165, 125, 330, 330); x.restore();
+    x.strokeStyle = '#b38a2e'; x.lineWidth = 7; x.beginPath(); x.arc(W / 2, 290, 169, 0, Math.PI * 2); x.stroke();
+    y = 540;
+  }
+  x.fillStyle = '#0b3b30'; x.font = '62px "Aref Ruqaa", serif';
+  wrapLines(x, NAME, 1000).forEach(l => { x.fillText(l, W / 2, y); y += 80; });
+  x.fillStyle = '#8a6a1c'; x.font = '48px "Aref Ruqaa", serif'; x.fillText('رحمه الله', W / 2, y); y += 66;
+  x.fillStyle = '#2d5a4c'; x.font = '40px "Amiri", serif'; x.fillText('اللهم اغفر له وارحمه وارفع درجته في المهديين', W / 2, y); y += 62;
+  x.fillStyle = '#0b3b30'; x.font = '52px "Amiri", serif'; x.fillText('شاركنا في الذكر والختمة والدعاء له', W / 2, y); y += 36;
+  if (portrait) {
+    let qr; try { qr = qrcode(9, 'H'); qr.addData(SITE); qr.make(); } catch (e) { qr = qrcode(0, 'H'); qr.addData(SITE); qr.make(); }
+    const T = drawPortraitQr(x, 170, y, 900, img, qr);
+    x.strokeStyle = '#b38a2e'; x.lineWidth = 5; roundRect(x, (W - T) / 2, y, T, T, 6); x.stroke();
+    y += T + 44;
+    x.fillStyle = '#2d5a4c'; x.font = '36px "Amiri", serif'; x.fillText('وجه عبدالله مرسوم من نقاط الكود نفسه — امسحه بكاميرا الموبايل', W / 2, y); y += 70;
+    const q2 = qrcode(0, 'M'); q2.addData(SITE); q2.make();
+    const bs = drawPlainQr(x, 150, y - 20, 200, q2);
+    x.fillStyle = '#6b6b5a'; x.font = '30px "Amiri", serif'; x.textAlign = 'right'; x.fillText('لو الكود الكبير ما اتقراش', W - 150, y + 40); x.fillText('امسح الكود الصغير أو افتح الرابط:', W - 150, y + 90);
+    x.textAlign = 'center'; x.font = '28px "IBM Plex Sans Arabic", sans-serif'; x.direction = 'ltr'; x.textAlign = 'right'; x.fillText(SITE.replace(/^https?:\/\//, ''), W - 150, y + 150);
+  } else {
+    const q = qrcode(0, 'M'); q.addData(SITE); q.make();
+    const n = q.getModuleCount(), box = Math.floor(540 / n) * (n + 6);
+    drawPlainQr(x, (W - box) / 2, y + 20, 540, q); y += 20 + box + 46;
+    x.fillStyle = '#2d5a4c'; x.font = '38px "Amiri", serif'; x.fillText('امسح الكود بكاميرا الموبايل', W / 2, y); y += 48;
+    x.fillStyle = '#6b6b5a'; x.font = '28px "IBM Plex Sans Arabic", sans-serif'; x.direction = 'ltr'; x.fillText(SITE.replace(/^https?:\/\//, ''), W / 2, y);
+  }
+  return new Promise(res => c.toBlob(b => res(b), 'image/png'));
+}
+let qrStyle = 'portrait';
+async function openQr() {
+  shareLine = 'شاركوا في الذكر والختمة والدعاء لعبدالله'; cardBlob = null;
+  $('modal').classList.remove('hidden'); $('mImg').removeAttribute('src'); $('mMsg').textContent = 'جاري تجهيز البطاقة…'; $('mPrint').classList.add('hidden'); $('mStyle').classList.add('hidden');
+  try {
+    cardBlob = await makeQrCard(qrStyle);
+    if (cardUrl) URL.revokeObjectURL(cardUrl);
+    cardUrl = URL.createObjectURL(cardBlob); $('mImg').src = cardUrl;
+    $('mMsg').textContent = qrStyle === 'portrait'
+      ? 'صورة عبدالله مرسومة من نقاط الكود نفسه. جرّب تمسحها بموبايلك قبل الطباعة، ولو ما اتقرتش استخدم الكود العادي.'
+      : 'اطبعها على ورق A5 أو احفظ الصورة، وفي العزاء والمناسبات ضعها في مكان ظاهر.';
+    $('mPrint').classList.remove('hidden'); $('mStyle').classList.remove('hidden');
+    $('mStyle').textContent = qrStyle === 'portrait' ? 'كود عادي (أسهل في المسح)' : 'كود بصورة عبدالله';
+  } catch (e) { cardBlob = null; $('mMsg').textContent = 'تعذّر تجهيز البطاقة.'; }
+  $('mSave').style.display = cardBlob ? '' : 'none';
+}
+$('mStyle').onclick = () => { qrStyle = qrStyle === 'portrait' ? 'plain' : 'portrait'; openQr(); };
+$('qrBtn').onclick = openQr;
+$('mPrint').onclick = () => { if (!cardUrl) return; const im = $('printImg'); im.onload = () => window.print(); im.src = cardUrl; if (im.complete) window.print(); };
+
+/* ---- 8) الإحصائيات والزوار والمدن (مجمّعة بدون بيانات شخصية) ---- */
+async function lookupPlace() {
+  const tries = [
+    async () => { const r = await fetch('https://get.geojs.io/v1/ip/geo.json'); const j = await r.json(); return { city: j.city, cc: j.country_code }; },
+    async () => { const r = await fetch('https://ipwho.is/?fields=success,city,country_code'); const j = await r.json(); if (!j.success) throw 0; return { city: j.city, cc: j.country_code }; }
+  ];
+  for (const t of tries) { try { const p = await t(); if (p && /^[A-Z]{2}$/.test(p.cc || '')) return p; } catch (e) {} }
+  return null;
+}
+/* ---- المتصلين الآن (حيّ) ---- */
+let presLast = null, dhikrUntil = 0, onlineData = null;
+function calcState() { if (document.hidden) return 'a'; if (Date.now() < dhikrUntil) return 'd'; return $('readerBody').querySelector('.ay') ? 'r' : 'v'; }
+function syncPresence() { const st = calcState(); if (st !== presLast) { presLast = st; if (DB.presenceSet) DB.presenceSet(st); } }
+function initPresence() {
+  if (!DB.presence) return;
+  presLast = calcState();
+  DB.presence(Math.random().toString(36).slice(2, 10), () => (presLast = calcState()));
+  document.addEventListener('visibilitychange', syncPresence);
+  setInterval(syncPresence, 20000);
+  new MutationObserver(syncPresence).observe($('readerBody'), { childList: true });
+  document.querySelectorAll('.tap').forEach(b => b.addEventListener('click', () => { dhikrUntil = Date.now() + 90000; syncPresence(); }));
+}
+function onlineCounts() {
+  const vals = Object.values(onlineData || {});
+  return { on: vals.filter(x => x !== 'a').length, rd: vals.filter(x => x === 'r').length, dk: vals.filter(x => x === 'd').length };
+}
+function paintOnline() {
+  const pill = $('livePill');
+  if (!useFirebase && !onlineData) { pill.classList.add('hidden'); return; }
+  const c = onlineCounts(), n = Math.max(1, c.on);
+  let t = `${fmt(n)} ${n === 1 ? 'متصل' : 'متصلين'} الآن`;
+  if (c.rd > 0) t += ` · ${fmt(c.rd)} ${c.rd === 1 ? 'بيقرا' : 'بيقروا'}`;
+  else if (c.dk > 0) t += ` · ${fmt(c.dk)} ${c.dk === 1 ? 'بيذكر' : 'بيذكروا'}`;
+  $('liveT').textContent = t; pill.classList.remove('hidden');
+  if (window.onStats) window.onStats();
+}
+DB.watch('presence', v => { onlineData = v; paintOnline(); });
+
+(function trackVisit() {
+  if (navigator.doNotTrack === '1' || window.doNotTrack === '1') return;
+  const today = dayKey();
+  if (!jget('seenSite', null)) { jset('seenSite', today); statAdd('total/devices', 1); }
+  if (jget('lastVisitDay', '') !== today) { jset('lastVisitDay', today); statAdd('days/' + today + '/uniq', 1); }
+  try { if (!sessionStorage.getItem('sv')) { sessionStorage.setItem('sv', '1'); statAdd('days/' + today + '/visits', 1); } } catch (e) {}
+  if (!jget('geoDone', false)) lookupPlace().then(p => {
+    if (!p) return;
+    jset('geoDone', true);
+    const city = String(p.city || '').replace(/[.$#\[\]\/\u0000-\u001f]/g, ' ').trim().slice(0, 45) || 'Unknown';
+    statAdd('cities/' + p.cc + '|' + city, 1); statAdd('countries/' + p.cc, 1);
+  });
+  initPresence();
+})();
+
+const CITY_AR = { Cairo: 'القاهرة', Giza: 'الجيزة', Alexandria: 'الإسكندرية', Damanhur: 'دمنهور', Tanta: 'طنطا', Mansoura: 'المنصورة', 'El Mahalla El Kubra': 'المحلة الكبرى', Zagazig: 'الزقازيق', Banha: 'بنها', Benha: 'بنها', Damietta: 'دمياط', 'Port Said': 'بورسعيد', Ismailia: 'الإسماعيلية', Suez: 'السويس', Faiyum: 'الفيوم', Fayoum: 'الفيوم', Asyut: 'أسيوط', Assiut: 'أسيوط', Sohag: 'سوهاج', Luxor: 'الأقصر', Aswan: 'أسوان', Hurghada: 'الغردقة', Riyadh: 'الرياض', Jeddah: 'جدة', Mecca: 'مكة', Medina: 'المدينة', Dubai: 'دبي', Kuwait: 'الكويت', Doha: 'الدوحة', Amman: 'عمّان', London: 'لندن', Unknown: 'غير معروف' };
+const regionAr = cc => { try { return new Intl.DisplayNames(['ar'], { type: 'region' }).of(cc) || cc; } catch (e) { return cc; } };
+let statsOn = false, sDays = null, sTotal = null, sCities = null, sCountries = null, sOnline = 0;
+function initStats() {
+  if (statsOn) return; statsOn = true;
+  DB.watchQ('stats/days', { last: 14 }, v => { sDays = v; paintStats(); });
+  DB.watch('stats/total', v => { sTotal = v; paintStats(); });
+  DB.watchQ('stats/cities', { byValue: true, last: 10 }, v => { sCities = v; paintStats(); });
+  DB.watchQ('stats/countries', { byValue: true, last: 6 }, v => { sCountries = v; paintStats(); });
+}
+function lastDays(n) { const base = Date.parse(dayKey() + 'T00:00:00Z'), out = []; for (let i = n - 1; i >= 0; i--) out.push(new Date(base - i * 864e5).toISOString().slice(0, 10)); return out; }
+const wdName = k => new Date(k + 'T00:00:00Z').toLocaleDateString('ar-EG', { weekday: 'short', timeZone: 'UTC' });
+function barsHtml(title, vals, labels) {
+  const mx = Math.max(1, ...vals);
+  return `<div class="ch"><div class="ch-t">${title}</div><div class="ch-b">${vals.map((v, i) => `<div class="ch-c"><span class="ch-v">${fmt(v)}</span><i style="height:${Math.round(v / mx * 90)}px"></i><span class="ch-l">${esc(labels[i])}</span></div>`).join('')}</div></div>`;
+}
+function deltaTxt(cur, prev) { if (!prev) return cur ? 'جديد' : '—'; const p = Math.round((cur - prev) / prev * 100); return (p >= 0 ? '+' : '−') + fmt(Math.abs(p)) + '٪'; }
+function hbarsHtml(rows) {
+  const mx = Math.max(1, ...rows.map(r => r[1]));
+  return rows.map(r => `<div class="hbar"><em>${esc(r[0])}</em><div><i style="width:${Math.round(r[1] / mx * 100)}%"></i></div><b>${fmt(r[1])}</b></div>`).join('');
+}
+function paintStats() {
+  if (!statsOn || $('stats').classList.contains('hidden')) return;
+  const days = lastDays(14), D = k => (sDays && sDays[k]) || {}, ser = f => days.map(k => +D(k)[f] || 0);
+  const uniq = ser('uniq'), ad = ser('adhkar'), jz = ser('juz'), vs = ser('visits');
+  const sum = (a, f, t) => a.slice(f, t).reduce((x, y) => x + y, 0), labels = days.slice(7).map(wdName);
+  const totAd = DH.reduce((a, d) => a + (gCount[d.id] || 0), 0);
+  const totJuz = Object.values((kh && kh.juz) || {}).reduce((a, v) => a + ((v && v.n) || 0), 0);
+  const topDh = DH.map(d => [d.t, gCount[d.id] || 0]).sort((a, b) => b[1] - a[1]).slice(0, 3);
+  const cityRows = Object.entries(sCities || {}).sort((a, b) => b[1] - a[1]).map(([k, v]) => { const [cc, city] = k.split('|'); return [`${CITY_AR[city] || city || '—'} — ${regionAr(cc)}`, v]; });
+  const ctryRows = Object.entries(sCountries || {}).sort((a, b) => b[1] - a[1]).map(([k, v]) => [regionAr(k), v]);
+  const oc = onlineCounts(), box = (n, l, sm) => `<div class="sbox"><b>${fmt(n)}</b><span>${l}</span>${sm ? `<small>${sm}</small>` : ''}</div>`;
+  const wk = (a) => [sum(a, 7, 14), sum(a, 0, 7)];
+  const cmp = (l, a) => { const [c, p] = wk(a); return `<div class="cmp"><span>${l}</span><span><b>${fmt(c)}</b> مقابل ${fmt(p)} (${deltaTxt(c, p)})</span></div>`; };
+  $('stBody').innerHTML =
+    `<div class="st-grid">${box(oc.on, 'متصلين الآن')}${box(oc.rd, 'بيقروا المصحف الآن')}${box(oc.dk, 'بيذكروا الآن')}${box(uniq[13], 'زوار النهاردة')}${box(sum(uniq, 7, 14), 'زوار آخر ٧ أيام', deltaTxt(sum(uniq, 7, 14), sum(uniq, 0, 7)) + ' عن الأسبوع اللي قبله')}${box((sTotal && sTotal.devices) || 0, 'إجمالي الأجهزة الزائرة')}${box(ad[13], 'أذكار النهاردة')}${box(jz[13], 'أجزاء النهاردة')}${box(totAd, 'إجمالي الأذكار')}${box(totJuz, 'إجمالي قراءات الأجزاء')}${box(stats().m, 'ختمات كاملة')}</div>` +
+    barsHtml('الزوار — آخر ٧ أيام', uniq.slice(7), labels) + barsHtml('الأذكار — آخر ٧ أيام', ad.slice(7), labels) + barsHtml('الأجزاء — آخر ٧ أيام', jz.slice(7), labels) +
+    `<div class="ch"><div class="ch-t">مقارنة الأسبوع بالأسبوع اللي قبله</div>${cmp('الزوار', uniq)}${cmp('الجلسات', vs)}${cmp('الأذكار', ad)}${cmp('الأجزاء', jz)}</div>` +
+    `<div class="ch"><div class="ch-t">أكتر الأذكار</div>${hbarsHtml(topDh)}</div>` +
+    `<div class="ch"><div class="ch-t">أكتر المدن زيارة</div>${cityRows.length ? hbarsHtml(cityRows) : '<p class="note">لسه مفيش بيانات مدن.</p>'}</div>` +
+    `<div class="ch"><div class="ch-t">الدول</div>${ctryRows.length ? hbarsHtml(ctryRows) : '<p class="note">لسه مفيش بيانات دول.</p>'}</div>` +
+    `<p class="note">الزائر بيتعد مرة في اليوم لكل جهاز، فالأرقام تقريبية ومش بالأشخاص. المدن من عنوان الاتصال، وبتتحسب مرة واحدة لكل جهاز.</p>`;
+}
+window.onStats = paintStats;
+function route() {
+  const on = location.hash === '#stats' || location.hash === '#admin';
+  $('stats').classList.toggle('hidden', !on);
+  if (on) { initStats(); paintStats(); setTimeout(() => $('stats').scrollIntoView(), 60); }
+}
+addEventListener('hashchange', route); route();
+
+
 </script>
 </body>
 </html>
